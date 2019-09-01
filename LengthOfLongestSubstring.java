@@ -59,18 +59,24 @@ public class LengthOfLongestSubstring {
     }
 
     //滑动窗口优化法
+    //想想acbab，普通滑动窗口法若统计到第二个b的时候发现重复，则令i从第二个元素开始重新算，但又会发现b重复
+    //在i从第三个元素开始，也一样，所以不如直接让i变为原来b位置的下一个元素
     public int solution3_official(String s) {
         int n = s.length(), ans = 0;
-        //Map记录了当前子串每个字符在原字符串中的位置
+        //Map记录了每个不重复字符在原字符串中的位置
         Map<Character, Integer> map = new HashMap<>();
         // try to extend the range [i, j]
         for (int j = 0, i = 0; j < n; j++) {
             //j表示当前不重复子串的下一个元素位置
+            //若下一个位置的元素已经重复，则i设置成已统计中被重复元素的下一个位置
+            //也有一种情况，重复的其实已经排除在子串之前了，所以i保持不表
             if (map.containsKey(s.charAt(j))) {
                 //当重复了，前面的都舍弃，令i从这个重复的元素的位置开始
                 i = Math.max(map.get(s.charAt(j)), i);
             }
             ans = Math.max(ans, j - i + 1);
+            //可能会覆盖已有，即重复元素记录后出现的下标
+            //另一点，这里存j+1，是存的重复元素的下一个位置，便于赋值给i
             map.put(s.charAt(j), j + 1);
         }
         return ans;

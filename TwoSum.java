@@ -15,7 +15,7 @@
 
 import java.util.HashMap;
 
-public class TwoNum {
+public class TwoSum {
     //暴力解法，注意两两组合的遍历方法
     public int[] solution1(int[] nums, int target) {
         //如下语句创建的整数数组，默认元素值为2
@@ -79,7 +79,7 @@ public class TwoNum {
     }
 
     public static void main(String[] args) {
-        TwoNum twoNum = new TwoNum();
+        TwoSum twoNum = new TwoSum();
 
         //测试数据1
         int[] nums = new int[]{2, 7, 11, 15};

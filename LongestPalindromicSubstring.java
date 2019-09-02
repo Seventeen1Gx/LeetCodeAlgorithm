@@ -7,6 +7,7 @@
 //官方还给出一种利用公共最长子串的方法，即反转s为s'，寻求s与s'的最长公共子串，且判断这个子串是不是回文，是就去更新最长的回文子串
 //还有一种“马拉车”算法，可以做到O(n)时间复杂度
 
+
 public class LongestPalindromicSubstring {
     //中心探寻法(比dp算法更好)--可以在每个字符两边添加#，如aba→#a#b#a#，从而实现奇偶遍历统一，结果再删除#
     public String solution1(String s) {

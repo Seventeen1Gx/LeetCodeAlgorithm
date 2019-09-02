@@ -14,9 +14,17 @@
 //用在本题，假设，找到中位数将
 //数组1为a[0] a[1] a[2] ... a[i-1] | a[i] ... a[m-1]
 //数组2为b[0] b[1] b[2] ... b[j-1] | b[j] ... b[n-1]
-//条件①即 i+j = m-1-i+1 + n-1-j+1 → j = (n+m)/2 - i → 确定了i就确定了j → 搜索符合条件的i值
-//又 j > 0 那么 (n+m)/2 > i 又i最大取值为m 所以得出约束n>m
+//i的范围为[0,m]，分隔符在i位置之前，同理j
+//当m+n为偶数时，中位数在原数组中不存在，条件①即 i+j = m-i + n-j → j = (n+m)/2 - i
+//当m+n为奇数时，中位数在原数组中存在，将其算在左边部分，条件①即 i+j = m-i + n-j + 1 → j = (n+m+1)/2 - i
+//对于整除和n+m为偶数的情况，(n+m)/2与(n+m+1)/2在本题中是一样的，故无论奇偶都用后者式子求j值
+//又该式得出的j应该有 j>=0 那么 (n+m)/2 >= i 或 (n+m+1)/2 >= i 又i最大取值为m 所以得出约束n>=m
 //条件②即 a[i-1]<=b[j]  b[j-1]<=a[i]
+//最后若m+n为偶数时，mid = (max(a[i-1],b[j-1]) + min(a[i],b[j]))/2
+//若m+n为奇数时，mid=max(a[i-1],b[j-1])
+//但要注意边界条件，即i=0，i=m，j=0，j=n的情况，i=0时j不会同时为0，i=m时j不会同时为n
+//又m<=n且i<m时，可推出j=(n+m+1)/2-i>(n+m+1)/2-m>=(2m+1)/2-m>0，即i<m时，b[j-1]<=a[i]不会出现越界
+//又m<=n且i>0时，可推出j=(n+m+1)/2-i<(n+m+1)/2<=(2n+1)/2<n，即i>0时，a[i-1]<=b[j]不会出现越界
 
 
 public class MedianOfTwoSortedArrays {
@@ -45,11 +53,11 @@ public class MedianOfTwoSortedArrays {
 
         //当k等于1时，表示寻找第一个元素，比较两数组的第一个元素即可
         if (k == 1) {
-            return min(num1[i], num2[j]);
+            return Math.min(num1[i], num2[j]);
         }
 
         //数组1的分界线(当分界线超限时，采用末尾元素来比较)
-        int pa = min(i + k / 2, num1.length);
+        int pa = Math.min(i + k / 2, num1.length);
         //数组2的分解线(根据pa来确定)
         int pb = j + k - (pa - i);
 
@@ -66,16 +74,72 @@ public class MedianOfTwoSortedArrays {
         }
     }
 
-    public int min(int i, int j) {
-        return i <= j ? i : j;
+    public double solution2(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+
+        //保证m小于或等于n，即数组1为小数组
+        if (m > n) {
+            return solution2(nums2, nums1);
+        }
+
+        //初始时i的搜索范围
+        int iMin = 0, iMax = m, i, j;
+        while (iMin <= iMax) {
+            //二分查找
+            i = (iMin + iMax) / 2;
+            //根据左右部分长度相等得出(且可以推导出下面式子得出的j有j>0与j<n始终成立，故不考虑j的边界情况)
+            j = (m + n + 1) / 2 - i;
+
+            //前面的条件是边界时，保证后面的条件不越界
+            if (i < m && nums2[j - 1] > nums1[i]) {
+                //说明i太小了
+                iMin = i + 1;
+            } else if (i > 0 && nums1[i - 1] > nums2[j]) {
+                //说明i太大了
+                iMax = i - 1;
+            } else {
+                //要么数组越界，要么满足不等式条件
+
+                int maxLeft = 0;
+                if (i == 0) {
+                    //数组1全部在右边
+                    maxLeft = nums2[j - 1];
+                } else if (j == 0) {
+                    //数组2全部在右边
+                    maxLeft = nums1[i - 1];
+                } else {
+                    maxLeft = Math.max(nums1[i - 1], nums2[j - 1]);
+                }
+
+                //总长度为奇数
+                if ((m + n) % 2 == 1) {
+                    return maxLeft;
+                }
+
+                //总长度为偶数
+                int minRight = 0;
+                if (i == m) {
+                    //数组1全在左边
+                    minRight = nums2[j];
+                } else if (j == n) {
+                    //数组2全在左边
+                    minRight = nums1[i];
+                } else {
+                    minRight = Math.min(nums1[i], nums2[j]);
+                }
+                return (maxLeft + minRight) / 2.0;
+            }
+        }
+        return 0.0;
     }
 
     public static void main(String[] args) {
-        int[] nums1 = new int[]{1, 2};
-        int[] nums2 = new int[]{1, 2};
+        int[] nums1 = new int[]{1, 3};
+        int[] nums2 = new int[]{2};
 
         MedianOfTwoSortedArrays m = new MedianOfTwoSortedArrays();
 
-        System.out.println(m.solution1(nums1, nums2));
+        System.out.println(m.solution2(nums1, nums2));
     }
 }

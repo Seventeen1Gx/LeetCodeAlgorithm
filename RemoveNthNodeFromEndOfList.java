@@ -12,7 +12,17 @@
 //给定的 n 保证是有效的。
 //
 //可以添加哑结点，使头结点的处理不用单独考虑(即头结点前再加一个结点)
+//
 
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
 
 public class RemoveNthNodeFromEndOfList {
     //两次遍历

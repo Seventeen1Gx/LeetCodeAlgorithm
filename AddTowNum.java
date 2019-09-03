@@ -15,7 +15,7 @@ class ListNode {
     int val;
     ListNode next;
       ListNode(int x) { val = x; }
-  }
+}
 
 public class AddTowNum {
     public ListNode solution(ListNode l1, ListNode l2) {

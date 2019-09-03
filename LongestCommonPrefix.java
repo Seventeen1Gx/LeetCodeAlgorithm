@@ -4,8 +4,6 @@
 //如果不存在公共前缀，返回空字符串 ""。
 
 
-import java.util.SplittableRandom;
-
 public class LongestCommonPrefix {
     public String solution1(String[] strs) {
         if (strs == null || strs.length == 0)

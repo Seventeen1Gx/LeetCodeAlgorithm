@@ -12,6 +12,7 @@
 //
 //注意不是贪婪匹配
 
+
 public class RegularExpressionMatching {
     public boolean solution1(String s, String p) {
         //先考虑空的情况

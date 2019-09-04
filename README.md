@@ -20,3 +20,6 @@
 18. [四数之和](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/FourSum.java)
 19. [删除链表的倒数第N个节点](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/RemoveNthNodeFromEndOfList.java)
 20. [有效的括号](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/ValidParentheses.java)
+21. [合并两个有序列表](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/MergeTwoSortedLists.java)
+22. [括号生成](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/GenerateParentheses.java)
+23. [合并k个有序列表](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/MergeKSortedLists.java)

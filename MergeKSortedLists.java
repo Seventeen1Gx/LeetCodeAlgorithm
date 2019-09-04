@@ -153,7 +153,16 @@ public class MergeKSortedLists {
     }
 
     //两两合并
-    public ListNode solution5
+    public ListNode solution5(ListNode[] lists) {
+        if (lists == null || lists.length == 0)
+            return null;
+
+        ListNode ans = null;
+        for (int i = 0; i < lists.length; i++) {
+            ans = mergeTwoList(ans, lists[i]);
+        }
+        return ans;
+    }
 
 
     //合并两个链表的官方代码，简洁！

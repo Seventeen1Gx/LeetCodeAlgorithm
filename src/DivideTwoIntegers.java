@@ -75,6 +75,29 @@ public class DivideTwoIntegers {
 
 
     //利用竖式除法
+    int solution2(int dividend, int divisor) {
+        //排除特殊情况
+        if (dividend == 0)
+            return 0;
+
+        if (dividend == Integer.MIN_VALUE && divisor == -1)
+            return Integer.MAX_VALUE;
+
+        //因为有负数转正数的操作会导致溢出
+        if (dividend == Integer.MIN_VALUE && divisor == Integer.MIN_VALUE)
+            return 1;
+
+        if (divisor == Integer.MIN_VALUE)
+            return 0;
+
+        int carry = 0;
+        //事先先'减'一次
+        if (dividend == Integer.MIN_VALUE)
+            if (divisor > 0)
+                dividend += divisor;
+            else if (divisor < 0)
+                dividend -= divisor;
+    }
 
     public static void main(String[] args) {
         DivideTwoIntegers d = new DivideTwoIntegers();

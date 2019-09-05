@@ -13,6 +13,8 @@
 //4. 一次遍历的哈希表法主要是因为，a+b=c，从a找c-b与从b找c-a是等价的
 
 
+package src;
+
 import java.util.HashMap;
 
 public class TwoSum {

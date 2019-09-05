@@ -9,6 +9,8 @@
 //注意空字符串可被认为是有效字符串。
 
 
+package src;
+
 import java.util.Stack;
 
 public class ValidParentheses {

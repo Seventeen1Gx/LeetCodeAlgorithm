@@ -8,6 +8,8 @@
 //还有一种“马拉车”算法，可以做到O(n)时间复杂度
 
 
+package src;
+
 public class LongestPalindromicSubstring {
     //中心探寻法(比dp算法更好)--可以在每个字符两边添加#，如aba→#a#b#a#，从而实现奇偶遍历统一，结果再删除#
     public String solution1(String s) {

@@ -5,6 +5,8 @@
 //说明：你不能倾斜容器，且 n 的值至少为 2。
 
 
+package src;
+
 public class ContainerWithMostWater {
     //暴力求解，前面的每个数字和他身后的每个数字组合成容器的两壁
     public int solution1(int[] height) {

@@ -5,6 +5,8 @@
 //注意：答案中不可以包含重复的三元组。
 
 
+package src;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

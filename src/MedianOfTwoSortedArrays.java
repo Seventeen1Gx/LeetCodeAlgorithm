@@ -41,6 +41,8 @@
 //最终A和B只剩下一个元素，则返回较小者。
 
 
+package src;
+
 public class MedianOfTwoSortedArrays {
     public double solution1(int[] nums1, int[] nums2) {
         int len = nums1.length + nums2.length;

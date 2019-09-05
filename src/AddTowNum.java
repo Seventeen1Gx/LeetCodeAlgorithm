@@ -11,6 +11,8 @@
 //2. 注意链表的使用
 
 
+package src;
+
 class ListNode {
     int val;
     ListNode next;

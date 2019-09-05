@@ -11,6 +11,8 @@
 //输出：["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]. (不一定非以字典序输出)
 
 
+package src;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

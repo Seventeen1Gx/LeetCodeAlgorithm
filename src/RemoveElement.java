@@ -7,6 +7,8 @@
 //元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
 
 
+package src;
+
 public class RemoveElement {
     //双指针法
     public int solution1(int[] nums, int val) {

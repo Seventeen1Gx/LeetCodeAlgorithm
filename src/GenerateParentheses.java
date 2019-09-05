@@ -16,6 +16,8 @@
 //当遇到左括号，left++，遇到右括号，left--，整个遍历过程left要>=0，且遍历结束时，left要=0
 
 
+package src;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,6 +6,8 @@
 // → 用long型保存结果，最后强制转化成int型，看是否变化
 
 
+package src;
+
 public class ReverseInteger {
     //需计算整数长度
     public int solution1(int x) {

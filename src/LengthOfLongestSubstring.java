@@ -7,6 +7,8 @@
 //后来上网查询发现另一个叫滑动窗口的方法
 
 
+package src;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

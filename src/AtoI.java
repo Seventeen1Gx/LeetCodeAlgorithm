@@ -17,6 +17,8 @@
 //假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−2^31,  2^31 − 1]。如果数值超过这个范围，请返回  INT_MAX (2^31 − 1) 或 INT_MIN (−2^31) 。
 
 
+package src;
+
 public class AtoI {
     public int solution(String str) {
         if (str == null || str.length() == 0) {

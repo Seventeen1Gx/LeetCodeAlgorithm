@@ -9,6 +9,8 @@
 //数组是引用传递，函数中改变数组，原传入函数的数组也会改变，所以本题其实两个返回值，一个是新数组，一个是新数组长度
 
 
+package src;
+
 public class RemoveDuplicatesFromSortedArray {
     //因为数组排好序了，所以重复元素一般在相邻位置
     public int solution(int[] nums) {

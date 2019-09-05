@@ -7,6 +7,8 @@
 //对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与C语言的 strstr() 以及 Java的 indexOf() 定义相符。
 
 
+package src;
+
 public class ImplementStrstr {
     public int solution1(String haystack, String needle) {
         if (needle.length() == 0)

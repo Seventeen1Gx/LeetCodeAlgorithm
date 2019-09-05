@@ -93,16 +93,74 @@ public class DivideTwoIntegers {
             return 0;
 
         int carry = 0;
-        //事先先'减'一次
-        if (dividend == Integer.MIN_VALUE)
+        //事先先'减'一次(不会出现不够减的情况)
+        if (dividend == Integer.MIN_VALUE) {
             if (divisor > 0)
                 dividend += divisor;
             else if (divisor < 0)
                 dividend -= divisor;
+            carry++;
+        }
+
+        //负数转正数，并记录符号(默认为正数)
+        boolean signed1 = true, signed2 = true;
+        if (dividend < 0) {
+            dividend = -dividend;
+            signed1 = false;
+        }
+        if (divisor < 0) {
+            divisor = -divisor;
+            signed2 = false;
+        }
+
+        //被除数长度
+        int x = dividend, len = 0;
+        while (x > 0) {
+            x /= 10;
+            len++;
+        }
+
+        //采用竖式除法运算(维护结果，与上次计算残留)
+        int ans = 0, bit = 0;
+        //遍历被除数的第一位数字到最后一位数字
+        for (int i = 1; i <= len; i++) {
+            //取被除数的一位数字，然后算上上次计算的残留
+            bit = bit * 10 + getKthNum(dividend, len, i);
+            //商的第一位
+            ans = ans * 10 + bit / divisor;
+            //残留
+            bit = bit % divisor;
+        }
+        //符号位异或运算，同假异真
+        if (signed1 ^ signed2)
+            return -(ans + carry);
+        else
+            return ans + carry;
     }
 
+    //取长度len的数字n的第k个数字(k从1开始计数)
+    public int getKthNum(int n, int len, int k) {
+        if (k > len || k < 0)
+            return -1;
+
+        //注意这里可能产生溢出，假如n是Integer.MAX_VALUE，取第1位，那么before势必溢出
+        //故加个判断
+        if (len == 10 && k == 1)
+            return n / (int) Math.pow(10, len - 1);
+
+        //用来去除n在k之前的数字
+        int before = (int) Math.pow(10, len - k + 1);
+        //用来去除n在k之后的数字
+        int after = (int) Math.pow(10, len - k);
+
+        return (n % before) / after;
+    }
+
+    //还有一种每次倍增除数，即除数+除数，直到结果接近被除数
+
     public static void main(String[] args) {
+        //静态方法不能访问非静态方法和非静态域，所以要用对象来调用非静态方法
         DivideTwoIntegers d = new DivideTwoIntegers();
-        d.solution1(-2147483648, 1);
+        d.solution2(2147483647, 1);
     }
 }

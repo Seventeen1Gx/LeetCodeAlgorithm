@@ -30,3 +30,4 @@
 28. [实现strStr()](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/ImplementStrstr.java)
 29. [两数相除](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/DivideTwoIntegers.java)
 30. [串联所有单词的子串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SubstringWithConcatenationOfAllWords.java)
+31. [下一个排列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/NextPermutation.java)

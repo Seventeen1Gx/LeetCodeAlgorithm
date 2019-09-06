@@ -31,3 +31,5 @@
 29. [两数相除](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/DivideTwoIntegers.java)
 30. [串联所有单词的子串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SubstringWithConcatenationOfAllWords.java)
 31. [下一个排列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/NextPermutation.java)
+32. [最长有效括号](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LongestValidParentheses.java)
+33. [搜索旋转排序数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)

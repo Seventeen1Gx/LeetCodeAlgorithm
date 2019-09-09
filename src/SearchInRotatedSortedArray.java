@@ -131,7 +131,7 @@ public class SearchInRotatedSortedArray {
 
     //剑指Offer上的方法，他和上面方法的区别就是他始终将左指针放在前一部分，右指针放在后一部分
     //而上面的方法[low,high]在倒数第二步时，low为旋转中心，right = low或者right = low + 1，这时两指针都在后一部分
-    //搜索的目的是，low往右，high往左，从而找到nums[low] >= nums[high]条件下，low与high相邻
+    //搜索的目的是，low往右，high往左，从而找到nums[low] >= nums[high]条件下(保证两针在左右不同部分)，low与high相邻
     public int findRotateCenterIndex_swordToOffer(int[] nums) {
         if (nums[0] < nums[nums.length - 1])
             return 0;
@@ -147,6 +147,9 @@ public class SearchInRotatedSortedArray {
             mid = (low + high) / 2;
             if (nums[mid] == nums[low] && nums[low] == nums[high])
                 return minInOrder(nums, low, high);
+            //注意下面的赋值也不一样
+            //(因为是从两端向中间靠拢，直到两针贴近相邻一格结束循环，当mid=low或者mid=high，循环已经在上面的语句结束)
+            //nums[mid]仍可能成为我们要找的目标如45123，所以这里的赋值方式是保留
             if (nums[mid] >= nums[low])
                 low = mid;
             else if (nums[mid] <= nums[high])

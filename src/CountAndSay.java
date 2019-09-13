@@ -22,11 +22,53 @@
 //第一个数为1，后面的每个数都是对其前一个数的"报数"
 //比如第一个数为1，是"一个一"，所以第二个数写成11
 //同理第三个数是第二个数念出来"二个1"，故为21
+//
+//所以除了第一个数，其他的数都是"几个几"这样的循环
+//假设xy表示x个y，循环每次求出一对x、y
+
 
 package src;
 
 public class CountAndSay {
     public String solution(int n) {
+        if (n <= 0)
+            return "";
+
+        if (n == 1)
+            return "1";
+
+        int x;
+        char y;
+        StringBuffer sb = new StringBuffer("1");
+
+        //第一个循环控制求序列中的第n项
+        int cnt = 1;
+        while (cnt != n) {
+            //第cnt项
+            String s = sb.toString();
+            //第二个循环根据前一项，求后一项
+            sb = new StringBuffer();
+            while (s.length() > 0) {
+                y = s.charAt(0);
+                x = 0;
+                //统计几个y
+                while ( x < s.length() && s.charAt(x) == y) x++;
+                //等到x个y
+                sb.append(x).append(y);
+                //统计剩余部分
+                s = s.substring(x);
+            }
+            cnt++;
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        CountAndSay c = new CountAndSay();
+        //打印前5项
+        for (int i = 0; i < 5; i++) {
+            System.out.println(c.solution(i + 1) + "\n");
+        }
 
     }
 }

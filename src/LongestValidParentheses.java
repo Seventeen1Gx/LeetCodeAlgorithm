@@ -5,6 +5,7 @@
 //根据22.括号生成产生灵感
 //根据子结构，想到可以动态规划
 
+
 package src;
 
 import java.util.Stack;

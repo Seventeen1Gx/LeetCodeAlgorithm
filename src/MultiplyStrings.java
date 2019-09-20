@@ -13,6 +13,6 @@ package src;
 
 public class MultiplyStrings {
     public String solution(String num1, String num2) {
-
+        return "";
     }
 }

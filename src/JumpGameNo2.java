@@ -21,6 +21,6 @@ package src;
 
 public class JumpGameNo2 {
     public int jump(int[] nums) {
-
+        return 0;
     }
 }

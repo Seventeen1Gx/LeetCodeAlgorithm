@@ -9,6 +9,6 @@ import java.util.List;
 
 public class PermutationsNo2 {
     public List<List<Integer>> permuteUnique(int[] nums) {
-
+        return null;
     }
 }

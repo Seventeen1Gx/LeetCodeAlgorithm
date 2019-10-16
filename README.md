@@ -59,7 +59,7 @@
 57. [插入区间](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/InsertInterval.java)
 58. [最后一个单词的长度](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LengthOfLastWord.java)
 59. [螺旋矩阵Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SpiralMatrixNo2.java)
-60. [第k个排列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
+60. [第k个排列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PermutationSequence.java)
 61. [旋转链表](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
 62. [不同路径](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
 63. [不同路径Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)

@@ -35,5 +35,41 @@ public class PermutationSequence {
     public String solution(int n, int k) {
         StringBuffer sb = new StringBuffer();
         List<Integer> nums = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            nums.add(i);
+        }
+        recursion(sb, nums, k);
+        return sb.toString();
+    }
+
+    //递归处理--尾递归，可改为非递归
+    //将nums中的可用数字组成的排列中的第k个排列，接到sb之后
+    private void recursion(StringBuffer sb, List<Integer> nums, int k) {
+        //可用数字个数
+        int n = nums.size();
+
+        if (n == 1) {
+            sb.append(nums.get(0));
+        } else {
+            //分别取memo中的可用数字作为开头数字，剩下数字可组成的排列数为m=(n-1)!
+            int m = 1;
+            n -= 1;
+            while (n > 0) {
+                m *= n;
+                n--;
+            }
+
+            //寻找(i-1)*m<k<=i*m，则选择可选数字中的第i个为开头
+            int i = 1;
+            while (i * m < k) i++;
+            sb.append(nums.get(i - 1));
+            nums.remove(i - 1);
+            recursion(sb, nums, k - (i - 1) * m);
+        }
+    }
+
+    public static void main(String[] args) {
+        PermutationSequence p = new PermutationSequence();
+        p.solution(5, 35);
     }
 }

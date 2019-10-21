@@ -9,8 +9,57 @@
 
 package src;
 
+import java.util.Stack;
+
 public class SimplifyPath {
+    //利用栈模拟路径的层级
     public String solution(String path) {
-        return null;
+        Stack<String> stack = new Stack<>();
+
+        //去除结尾的斜杠
+        int n = path.length();
+        int end = n - 1;
+        while (end >= 0 && path.charAt(end) == '/') end--;
+
+        //游标
+        int i = 0;
+        while (i <= end) {
+            char c = path.charAt(i);
+            //过滤多余的'/'
+            while (c == '/') {
+                i++;
+                c = path.charAt(i);
+            }
+            //获取目录名
+            int j = i;
+            while (j <= end && path.charAt(j) != '/') j++;
+            String d = path.substring(i, j);
+
+            //目录名有三种："."或".."或其他
+            if (!d.equals(".")) {
+                if (d.equals("..")) {
+                    //上一目录
+                    if (!stack.empty())
+                        stack.pop();
+                } else {
+                    stack.push("/" + d);
+                }
+            }
+
+            i = j;
+        }
+
+        if (stack.empty()) {
+            return "/";
+        } else {
+            StringBuffer sb = new StringBuffer();
+            while (!stack.empty()) {
+                //每次加在前面
+                StringBuffer sbTemp = new StringBuffer(stack.pop());
+                sbTemp.append(sb);
+                sb = sbTemp;
+            }
+            return sb.toString();
+        }
     }
 }

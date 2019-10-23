@@ -66,21 +66,57 @@ public class MinimumWindowSubstring {
         }
 
         //维护一个最小覆盖子串和其长度
-        String minWindows;
-        int minWindowsLen = s.length();
-
-        //已覆盖的字符数
-        int coverNum = 0;
+        String minWindows = "";
+        int minWindowsLen = s.length() + 1;
 
         int start = 0, end = 0;
         while (end < s.length()) {
-
+            //寻求s[start:end]以覆盖t，现需右移的是end
+            char c = s.charAt(end);
+            if (map.containsKey(c)) {
+                //c可以用来覆盖t中的一个字符
+                map.put(c, map.get(c) - 1);
+                if (judge(map)) {
+                    //现s[start:end]可以覆盖t ①
+                    //然后右移start，直到s[start:end]不能覆盖t
+                    //即将开头多余的字符去除
+                    //要么start所指字符不可以用来覆盖t
+                    //要么start所指字符可以用来覆盖t，但有富余
+                    char d = s.charAt(start);
+                    while (!map.containsKey(d) || map.get(d) < 0) {
+                        if (map.containsKey(d))
+                            map.put(d, map.get(d) + 1);
+                        start++;
+                        d = s.charAt(start);
+                    }
+                    //现s[start:end]可以覆盖t，且长度小于等于①处的长度
+                    if (end - start + 1 < minWindowsLen) {
+                        minWindowsLen = end - start + 1;
+                        minWindows = s.substring(start, end + 1);
+                    }
+                    //start右移一格，使s[start:end]不再覆盖t，下次开始右移end
+                    start++;
+                    map.put(d, map.get(d) + 1);
+                }
+            }
+            end++;
         }
-
+        return minWindows;
     }
+
+    //判断map中的每个字符是否都可以被覆盖完，甚至还有富余都没事
+    private boolean judge(Map<Character, Integer> map) {
+        for (int num : map.values()) {
+            if (num > 0)
+                return false;
+        }
+        return true;
+    }
+
+    //方法二start右移时还可以优化，可以直接右移到s中包含在t内的字符中的第一个即可，而不用一个一个得右移
 
     public static void main(String[] args) {
         MinimumWindowSubstring m = new MinimumWindowSubstring();
-        m.solution1("ADOBECODEBANC", "ABC");
+        m.solution2("ADOBECODEBANC", "ABC");
     }
 }

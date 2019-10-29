@@ -94,7 +94,7 @@ public class SearchInRotatedSortedArray {
 //                    //进入这里，根据if条件排除，有
 //                    //nums[mid] <= head 且 nums[mid] >= tail
 //                    //而旋转数组的性质: tail <= head
-//                    //故nums[high] <= nums[mid] <= head
+//                    //故tail <= nums[mid] <= head
 //                    if (tail == head) {
 //                        //tail = nums[mid] = head
 //                        //没法判断真正的旋转点在前还是在后
@@ -102,8 +102,8 @@ public class SearchInRotatedSortedArray {
 //                        //采用顺序查找，找[low:high]中的最小值
 //                        return minInOrder(nums, low, high);
 //                    } else {
-//                        //nums[mid]=num[high]或nums[mid]=head
-//                        //因为nums[high]和nums[low]在旋转前的数组中是相邻的两个值，他们中间不会有值
+//                        //nums[mid]=tail或nums[mid]=head
+//                        //因为tail和head在旋转前的数组中是相邻的两个值，他们中间不会有值
 //                        if (tail == nums[mid])
 //                            //真正的旋转点在mid之前
 //                            high = mid - 1;
@@ -180,7 +180,7 @@ public class SearchInRotatedSortedArray {
     }
 
 
-    //[low:high]中的最小值(第一次出现)的下标
+    //[low:high]中的最小值(第一次出现的)的下标
     public int minInOrder(int[] nums, int low, int high) {
         if (low > high)
             return -1;

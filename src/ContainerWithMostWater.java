@@ -28,11 +28,11 @@ public class ContainerWithMostWater {
     //采用的是一种双指针法，开始时，指针指向数组首尾两端，每次计算所指两线之间的最大水容量
     //然后指向低的向指向高的移动一格，再计算，重复过程，一直到两针相遇
     //使用maxArea保存该过程中遇到的最大的水容量
+    //
     //可以这样理解：无论移动哪个指针，首先两者距离是变小的，而面积由二者的最小值确定
-    //假设H[i]<H[j]，area=(j-i)*H[j], 若移动j，则area=(j-i-1)*min(H[i],H[j-1])
-    //即H[i]<=H[j]时，area=(j-i-1)*H[i]小于上一个area；H[i]>H[j]时，也小于area
-    //所以，移动高的指针，只会减小面积，所以要移动小指针
-    //但是上面只是说明移动高指针行不通，但还没证明移动小指针就说得通了
+    //假设H[i]<H[j]，area=(j-i)*H[i], 若移动j，则area=(j-i-1)*min(H[i],H[j-1])
+    //H[i]<=H[j-1]时，area=(j-i-1)*H[i]小于上一个area；H[i]>H[j-1]时，也小于area
+    //这只能说明一次移动高指针面积会减小
     public int solutin2(int[] height) {
         int maxArea = 0, area;
 

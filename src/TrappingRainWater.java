@@ -77,22 +77,30 @@ public class TrappingRainWater {
         return ans;
     }
 
-    //使用栈(每个元素都要入栈出栈各一次，所以O(n)复杂度)
-    //栈中元素始终是自底向上是变小的
+    //使用单调栈(每个元素都要入栈出栈各一次，所以O(n)复杂度)
+    //
+    //官方题解思路：
+    //如果当前的条形块小于或等于栈顶的条形块，我们将条形块的索引入栈
+    //意思是当前的条形块被栈中的前一个条形块界定
+    //如果我们发现一个条形块长于栈顶
+    //我们可以确定栈顶的条形块被当前条形块和栈的前一个条形块界定
+    //因此我们可以弹出栈顶元素并且累加答案到ans
+    //
     //建议使用例子[0,1,0,2,1,0,1,3,2,1,2,1]走一遍
     public int solution3_official(int[] height) {
         int sum = 0;
         //栈内存储柱子的下标
         Stack<Integer> stack = new Stack<>();
         int current = 0;
-        //current遍历每个柱子
+        //current遍历每个柱子，每个柱子要进栈之后，出栈时才有作用
         while (current < height.length) {
             //如果栈不空并且当前指向的高度大于栈顶高度就一直循环
-            //(说明此时是积水右边的那堵墙，然后往左遍历，一直到左墙壁)
+            //(说明此时current是积水右边的那堵墙，然后往左遍历，一直到左墙壁)
             while (!stack.empty() && height[current] > height[stack.peek()]) {
                 int h = height[stack.peek()]; //取出要出栈的元素
                 stack.pop(); //出栈
-                if (stack.empty()) { // 栈空就出去
+                if (stack.empty()) {
+                    //无前一个条形快
                     break;
                 }
                 //两堵墙(当前柱子和新栈顶表示的柱子)之前的距离。
@@ -143,28 +151,22 @@ public class TrappingRainWater {
     }
 
 
-    //双指针法，有了上面这个方法的启发，之所以不能省略maxRight数组的空间，是因为我们的循环从左往右
-    //故我们需要两个指针，left从左向右遍历(上面的i)，right从右往左遍历，从而维护两个变量maxLeft和maxRight
-    //我们知道更新maxLeft是使用height[left]和maxLeft中的较大值
-    //同理，更新maxRight也是使用height[right]和maxRight中的较大值
-    //那么什么时候从左往右，什么时候从右往左？
-    //由sum += Math.min(maxLeft, maxRight) - height[i]
-    //可知积水高度由maxLeft和maxRight中较小的那个确定
-    //当height[left]<height[right]，则maxLeft一定小于maxRight
-    //因为maxLeft是由height[left]更新而来
-    //这时我们从左往右
-    //反之我们从右往左
+    //双指针法，有了上面这个方法的启发，之所以不能省略maxRight数组的空间，是因为我们只有一个指针i，其遍历为从左往右
+    //故我们需要两个指针，left从左向右遍历，right从右往左遍历，直到两针相遇，也就遍历了所有列(还是按列计算)
+    //我们用maxLeft来表示left左侧(不包括left)最大高度，maxRight表示right右侧(不包括right)最大高度
+    //每次循环动用哪个指针？即计算哪个列上的积水
+    //计算每列上的积水，是看其左右两边最大高度中，最小高度确定水平面
     public int solution4_official(int[] height) {
         int sum = 0;
         int maxLeft = 0;
         int maxRight = 0;
         int left = 0;
         int right = height.length - 1; // 加右指针进去
-        //每次循环计left所指列或right所指列上的积水
+
+        //每次循环计算left所指列或right所指列上的积水
         while (left < right) {
             if (height[left] < height[right]) {
-                //height[left]<height[right]，由左壁确定水平面
-                //此处maxleft表示left所指柱子之前所有柱子中最高柱子的高度(不包括height[left])
+                //计算left列的积水，因为maxleft可以确定水平面。为什么呢？
                 if (height[left] >= maxLeft)
                     //当前列比当前确立的左壁更高，则此列在水平面之上，无积水
                     //更新新的左壁高度

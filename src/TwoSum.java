@@ -10,7 +10,10 @@
 //1. 多时不用Java，数组的构造有些遗忘
 //2. 注意Java中的哈希表--无须键值对，键不可重复，提取某键值时，先看该键是否存在
 //3. 注意[3, 3]和6的情况要返回[0, 1]，是同一个元素不能重复利用
-//4. 一次遍历的哈希表法主要是因为，a+b=c，从a找c-b与从b找c-a是等价的
+//4. 一次遍历的哈希表法主要是因为，a+b=c，从a找c-b与从b找c-a是等价的，方法三用的后者
+//
+//
+//相似题目：15. 三数之和、18. 四数之和
 
 
 package src;
@@ -34,47 +37,53 @@ public class TwoSum {
     }
 
     //哈希表法--两次遍历
+    //本题有一个很神奇的地方，对于输入[3,3]与6
+    //答案会是不同位置重复元素的使用
+    //hashMap中保存的是重复元素的最后一次出现
+    //第二次遍历中，num1先保存的是重复元素的第一次出现，num2再去hashMap中寻找，所以不冲突
     public int[] solution2(int[] nums, int target) {
         //另一种创建数组的方式
         int[] ans = new int[]{0, 0};
 
         //遍历一遍数组，建立值-下标的哈希表
         //注意题目中的条件，同一个元素不能重复利用，故这里一个值记录一个下标即可
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        HashMap<Integer, Integer> hashMap = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
             hashMap.put(nums[i], i);
         }
 
-        int num_1;
-        int num_2;
+        int num1;
+        int num2;
         for (int i = 0; i < nums.length; i++) {
-            num_1 = nums[i];
-            num_2 = target - num_1;
+            num1 = nums[i];
+            num2 = target - num1;
             //同一个元素不能重复利用
-            if (hashMap.containsKey(num_2) && hashMap.get(num_2) != i) {
+            if (hashMap.containsKey(num2) && hashMap.get(num2) != i) {
                 ans[0] = i;
-                ans[1] = hashMap.get(num_2);
+                ans[1] = hashMap.get(num2);
+                break;
             }
         }
         return ans;
     }
 
     //哈希表法--一次遍历
-    public int[] solution3(int nums[], int target) {
+    //对于当前遍历到的nums[i]，查看[0,i-1]中，是否有我们需要的target-nums[i]
+    public int[] solution3(int[] nums, int target) {
         //这里不创建答案数组，采用标准答案中的写法
 
         //遍历的同时，看已经存在的键是否有合适的
-        int num_1;
-        int num_2;
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        int num1;
+        int num2;
+        HashMap<Integer, Integer> hashMap = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
-            num_1 = nums[i];
-            num_2 = target - num_1;
+            num1 = nums[i];
+            num2 = target - num1;
             //因为当前元素num_1还未放进哈希表，所以这不会出现重复利用同一元素的可能
-            if (hashMap.containsKey(num_2)) {
-                return new int[]{i, hashMap.get(num_2)};
+            if (hashMap.containsKey(num2)) {
+                return new int[]{i, hashMap.get(num2)};
             } else {
-                hashMap.put(num_1, i);
+                hashMap.put(num1, i);
             }
         }
         throw new IllegalArgumentException("No tow num solution");

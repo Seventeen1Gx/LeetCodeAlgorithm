@@ -100,4 +100,8 @@
 98. [验证二叉搜索树](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
 99. [恢复二叉搜索树](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
 100. [相同的树](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
+371. [两整数之和](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SumOfTwoIntegers.java)
+415. [字符串相加](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/AddStrings.java)
+445. [两数相加Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/AddTwoNumbersNo2.java)
 454. [四数之和Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FourNumNo2.java)
+989. [数组形式的整数加法](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/AddToArrayFormOfInteger.java)

@@ -6,7 +6,7 @@
 //
 //你可以假设 nums1 和 nums2 不会同时为空。
 //
-//思路
+//思路（下面两种思路都要确保数组1为小数组）
 //一种方法是借用寻找两排序数组第k个数的思路
 //另一种方法根据中位数定义，中位数将一组数分成左右两部分，且有：
 //① len(left)=len(right) ② max(left) <= min(right)
@@ -74,7 +74,7 @@ public class MedianOfTwoSortedArrays {
 
         //数组1的分界线(当分界线超限时，采用末尾元素来比较)
         int pa = Math.min(i + k / 2, num1.length);
-        //数组2的分解线(根据pa来确定)
+        //数组2的分解线(根据pa来确定，保证[i,pa]与[j,pb]的元素总数为k)
         int pb = j + k - (pa - i);
 
         if (num1[pa - 1] < num2[pb - 1]) {
@@ -90,6 +90,8 @@ public class MedianOfTwoSortedArrays {
         }
     }
 
+
+    //关键是寻找两数组中的分界线i、j，而j可由i得到，故是去寻找i
     public double solution2(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;

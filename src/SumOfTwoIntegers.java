@@ -16,7 +16,7 @@ public class SumOfTwoIntegers {
         String aBinStr = Integer.toBinaryString(a);
         String bBinStr = Integer.toBinaryString(b);
 
-        StringBuffer ansStr = new StringBuffer();
+        StringBuilder ansStr = new StringBuilder();
 
         int i = aBinStr.length() - 1;
         int j = bBinStr.length() - 1;

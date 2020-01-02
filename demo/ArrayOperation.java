@@ -24,7 +24,7 @@ public class ArrayOperation {
             }
         }
         // nums 中不存在 target
-        // 可以返回 -1 ，也可以返回 target 的插入位置
+        // 可以返回 -1，也可以返回 target 的插入位置
         return left;
     }
 
@@ -42,8 +42,9 @@ public class ArrayOperation {
      */
     public void selectSort(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
-            // 记录[i:]中最小元素的下标
+            // 记录 [i:] 中最小元素的下标，初始化为 i
             int min = i;
+            // 遍历 [i+1:]，从而得到 min
             for (int j = i + 1; j < nums.length; j++) {
                 min = nums[min] < nums[j] ? min : j;
             }

@@ -44,7 +44,7 @@ public class TwoSum {
      * 对于输入 [3,3] 与 6，我们可以看到
      * hashMap 中保存的是重复元素的最后一次出现，即 (3 → 1)
      * 而第二次遍历中， num1 先保存的是重复元素的第一次出现，即下标 0 处的 3，再去 hashMap 中寻找 num2
-     * 在不使用重复元素的情况下，仍可以得到正确结果
+     * 所以在不使用重复元素的情况下，仍可以得到正确结果
      */
     public int[] solution2(int[] nums, int target) {
         int[] ans = new int[]{0, 0};
@@ -89,7 +89,7 @@ public class TwoSum {
                 hashMap.put(num1, i);
             }
         }
-        throw new IllegalArgumentException("No tow num solution");
+        throw new IllegalArgumentException("No TwoSum Solution");
     }
 
 

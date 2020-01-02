@@ -1,19 +1,23 @@
-// 454. 给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] + B[j] + C[k] + D[l] = 0。
-//
-// 为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500 。所有整数的范围在 -228 到 228 - 1 之间，最终结果不会超过 231 - 1 。
-
-
 package src;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FourNumNo2 {
-
+/**
+ * 454. 给定四个包含整数的数组列表 A，B，C，D，计算有多少个元组 (i, j, k, l)，使得 A[i] + B[j] + C[k] + D[l] = 0。
+ *
+ * 为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500。所有整数的范围在 -228 到 228 - 1 之间，最终结果不会超过 231 - 1。
+ *
+ * @author Seventeen1Gx
+ * @version 1.0
+ */
+public class FourSumNo2 {
     private static final int REQUIRE_NUM = 4;
 
-    // A与B作笛卡尔积，组成新数组num1[]，C与D作笛卡尔积，组成新数组num2[]
-    // 问题转化为两数之和
+    /**
+     * 数组 A 与数组 B 作笛卡尔积，组成新数组 num1，数组 C 与 数组 D 作笛卡尔积，组成新数组 num2
+     * 于是，问题转化为两数之和
+     */
     public int solution(int[] A, int[] B, int[] C, int[] D) {
         if (A.length + B.length + C.length + D.length < REQUIRE_NUM) {
             return 0;
@@ -36,7 +40,7 @@ public class FourNumNo2 {
         for (int i = 0; i < C.length; i++) {
             for (int j = 0; j < D.length; j++) {
                 num2[p2] = C[i] + D[j];
-                // 将num2放入查找表
+                // 顺便将 num2 放入查找表
                 if (map.containsKey(num2[p2])) {
                     map.put(num2[p2], map.get(num2[p2]) + 1);
                 } else {
@@ -47,7 +51,7 @@ public class FourNumNo2 {
         }
 
         int ans = 0;
-        // 遍历num1的每个元素，去寻找num2里有无相反数
+        // 遍历 num1 的每个元素，去寻找 num2 里有无相反数
         for (int i = 0; i < num1.length; i++) {
             if (map.containsKey(-num1[i])) {
                 ans += map.get(-num1[i]);

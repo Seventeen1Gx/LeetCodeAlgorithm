@@ -19,13 +19,9 @@ public class TwoSumClosest {
      * 双指针法，遍历过程中记录离 target 最近的 nums[left]+nums[right]
      */
     public int solution(int[] nums, int target) {
-        // 将结果初始化为最远情况
-        int ans = Integer.MAX_VALUE - target > target - Integer.MIN_VALUE
-                ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-
         // 排除异常情况
         if (nums == null || nums.length < REQUIRE_NUM) {
-            return ans;
+            throw new IllegalArgumentException("No TwoSumClosest Solution");
         }
 
         // 记录循环过程中遇到的 nums[left]+nums[right] 与 target 的最小距离
@@ -33,6 +29,7 @@ public class TwoSumClosest {
 
         Arrays.sort(nums);
         int left = 0, right = nums.length - 1;
+        int ans = nums[left] + nums[right];
         while (left < right) {
             if (nums[left] + nums[right] == target) {
                 ans = target;

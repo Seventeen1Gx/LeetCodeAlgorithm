@@ -106,7 +106,7 @@
 371. [两整数之和](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SumOfTwoIntegers.java)
 415. [字符串相加](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/AddStrings.java)
 445. [两数相加Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/AddTwoNumbersNo2.java)
-454. [四数之和Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FourNumNo2.java)
+454. [四数之和Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FourSumNo2.java)
 516. [最长回文子序列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LongestPalindromicSubsequence.java)
 560. [和为K的子数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SubarraySumEqualsK.java)
 647. [回文子串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PalindromicSubstrings.java)

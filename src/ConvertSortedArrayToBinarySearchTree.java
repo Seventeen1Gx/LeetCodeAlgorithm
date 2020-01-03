@@ -37,5 +37,6 @@ public class ConvertSortedArrayToBinarySearchTree {
         root.left = convert(nums, left, mid - 1);
         root.right = convert(nums, mid + 1, right);
         return root;
+
     }
 }

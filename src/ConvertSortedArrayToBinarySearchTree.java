@@ -11,4 +11,31 @@ package src;
  * @version 1.0
  */
 public class ConvertSortedArrayToBinarySearchTree {
+    public TreeNode solution(int[] nums) {
+        return convert(nums, 0, nums.length - 1);
+    }
+
+
+    /**
+     * @param nums 有序数组
+     * @param left 左边界
+     * @param right 右边界
+     * @return 将 nums[left:right] 转化成平衡二叉树，返回转化后平衡二叉树的根结点引用
+     */
+    private TreeNode convert(int[] nums, int left, int right) {
+        // 因为要平衡，故选定中间的元素作为根结点，然后将该元素左右两侧的元素分别做为该根结点的左子树与右子树
+        if (left > right) {
+            return null;
+        }
+
+        if (left == right) {
+            return new TreeNode(nums[left]);
+        }
+
+        int mid = (left + right) / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = convert(nums, left, mid - 1);
+        root.right = convert(nums, mid + 1, right);
+        return root;
+    }
 }

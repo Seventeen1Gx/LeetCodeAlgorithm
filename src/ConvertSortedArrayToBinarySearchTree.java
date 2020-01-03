@@ -15,7 +15,6 @@ public class ConvertSortedArrayToBinarySearchTree {
         return convert(nums, 0, nums.length - 1);
     }
 
-
     /**
      * @param nums 有序数组
      * @param left 左边界

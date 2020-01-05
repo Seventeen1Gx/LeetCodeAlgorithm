@@ -92,7 +92,7 @@
 90. [子集II](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SubSetsNo2.java)
 91. [解码方法](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/DecodeWays.java)
 92. [反转链表II](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/ReverseLinkedListNo2.java)
-93. [复原IP地址](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
+93. [复原IP地址](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/RestoreIpAddresses.java)
 94. [二叉树的中序遍历](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/BinaryTreeInorderTraversal.java)
 95. [不同的二叉搜索树II](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)
 96. [不同的二叉搜索树](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SearchInRotatedSortedArray.java)

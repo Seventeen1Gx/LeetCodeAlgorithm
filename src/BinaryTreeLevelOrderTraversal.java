@@ -108,7 +108,7 @@ public class BinaryTreeLevelOrderTraversal {
 
     /**
      * 递归解法
-     * 中序遍历每一个结点，然后将其添加到对应的列表中去
+     * 先序遍历每一个结点，然后将其添加到对应的列表中去
      */
     public List<List<Integer>> solution3(TreeNode root) {
         if (root == null) {

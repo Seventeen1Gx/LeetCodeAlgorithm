@@ -118,6 +118,8 @@
 119. [杨辉三角Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PascalsTriangleNo2.java)
 121. [买卖股票的最佳时机](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/BestTimeToBuyAndSellStock.java)
 122. [买卖股票的最佳时机Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/BestTimeToBuyAndSellStockNo2.java)
+125. [验证回文串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/ValidPalindrome.java)
+136. [只出现一次的数字](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SingleNumber.java)
 144. [二叉树的前序遍历](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/BinaryTreePreorderTraversal.java)
 167. [两数之和Ⅱ-输入有序数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/TwoSumNo2InputArrayIsSorted.java)
 204. [反转链表](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/ReverseLinkedList.java)

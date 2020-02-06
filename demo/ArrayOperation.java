@@ -53,7 +53,24 @@ public class ArrayOperation {
         }
     }
 
-    //冒泡排序
+    /**
+     * 冒泡排序
+     */
+    public void bubbleSort(int[] nums) {
+        // 考虑第一次遍历
+        // num[0] 与 num[1] 比较
+        // num[0] > num[1] 则交换，否则不动
+        // 接着比较 num[1] 和 num[2]
+        for (int i = 0; i < nums.length; i++) {
+            // 第一层循环，确定比较范围为 [0:len - i - 1]
+            // 第二层循环，从前往后，比较相邻元素
+            for (int j = 0; j < nums.length - i - 1; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    swap(nums, j, j + 1);
+                }
+            }
+        }
+    }
 
     //模式匹配-基本方法
 

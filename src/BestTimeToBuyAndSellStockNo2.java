@@ -13,5 +13,4 @@ package src;
  * @version 1.0
  */
 public class BestTimeToBuyAndSellStockNo2 {
-    pub
 }

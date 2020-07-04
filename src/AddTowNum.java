@@ -12,6 +12,9 @@
 
 package src;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ListNode {
     int val;
     ListNode next;
@@ -54,4 +57,64 @@ public class AddTowNum {
 
         return headNode.next;
     }
+}
+
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        // 按左端点从小到大排序
+        sort(intervals);
+
+        List<List<Integer>> resultList = new ArrayList<>();
+
+        // 从第一个区间的右端点，向后找，直到找到第一个大于它的左端点
+        // 以此类推
+        int i = 0;
+        while (i < intervals.length) {
+            int j = i+1;
+            while (j < intervals.length && intervals[i][1] >= intervals[j][0]) {
+                j++;
+            }
+            List<Integer> interval = new ArrayList<>();
+            interval.add(intervals[i][0]);
+            interval.add(Math.max(intervals[i][1], intervals[j-1][1]));
+            resultList.add(interval);
+
+            i=j;
+        }
+
+        int[][] result = new int[resultList.size()][2];
+        for (i=0; i<resultList.size(); i++) {
+            result[i][0] = resultList.get(i).get(0);
+            result[i][1] = resultList.get(i).get(1);
+        }
+        return result;
+    }
+
+    public void sort(int[][] intervals) {
+        // 一行看成一个元素
+        for (int i=0; i<intervals.length; i++) {
+            boolean flag = true;
+            for (int j=0; j<intervals.length-1-i; j++) {
+                if (intervals[j][0] > intervals[j+1][0]) {
+                    int[] temp = intervals[j];
+                    intervals[j] = intervals[j+1];
+                    intervals[j+1] = temp;
+                    flag = false;
+                }
+            }
+            if (flag)
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        int[][] m = {
+                {1,4},
+                {0,2},
+                {3,5}
+        };
+        s.merge(m);
+    }
+
 }

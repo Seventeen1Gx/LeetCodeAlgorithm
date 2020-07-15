@@ -10,13 +10,11 @@ public class ArrayOperation {
     /**
      * 折半查找
      */
-    public int binarySearch(int[] nums, int target) {
+    public int binarySearch_1(int[] nums, int target) {
         int left = 0, right = nums.length - 1, mid;
         // 在 [left, right] 范围内寻找目标数字
-        // 每次没找到，就减半搜索范围
-        // 注意 left == right 时，仍要进入循环判断
         while (left <= right) {
-            mid = (left + right) >> 1;
+            mid = left + (right - left) / 2;
             if (nums[mid] < target) {
                 left = mid + 1;
             } else if (nums[mid] > target) {
@@ -25,8 +23,40 @@ public class ArrayOperation {
                 return mid;
             }
         }
-        // nums 中不存在 target
-        // 返回 target 应该插入的位置，即 left
+        // 目标不存在时返回插入位置
+        return left;
+    }
+
+    public int binarySearch_2(int[] nums, int target) {
+        int left = 0, right = nums.length, mid;
+        // 在 [left:right) 范围内寻找目标数字
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid;
+            } else {
+                return mid;
+            }
+        }
+        // 这也是插入位置
+        return left;
+    }
+
+    // nums 中有重复元素，返回目标出现的最左位置
+    // 上面两种方法，不一定是最左，但是插入位置不论有没有重复元素，都是对的
+    public int binarySearch_3(int[] nums, int target) {
+        // [left:right] 中搜寻目标
+        int left = 0, right = nums.length - 1, mid;
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            if (nums[mid] >= target)
+                right = mid;
+            else
+                left = mid + 1;
+        }
+        // 这也是插入位置
         return left;
     }
 
@@ -114,7 +144,7 @@ public class ArrayOperation {
         // 使用二分查找，确定插入位置
         for (int i = 1; i < nums.length; i++) {
             int temp = nums[i];
-            int insertIndex = binarySearch(Arrays.copyOf(nums, i), temp);
+            int insertIndex = binarySearch_1(Arrays.copyOf(nums, i), temp);
             for (int j = i; j > insertIndex ; j--) {
                 nums[j] = nums[j - 1];
             }
@@ -378,6 +408,6 @@ public class ArrayOperation {
 
     public static void main(String[] args) {
         ArrayOperation a = new ArrayOperation();
-        a.quickSort(new int[]{5,7,2,3,0,4});
+        a.binarySearch_2(new int[]{1, 3,3, 5, 7}, 2);
     }
 }

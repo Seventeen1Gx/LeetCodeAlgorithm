@@ -50,4 +50,29 @@ public class SqrtX {
         }
         return (int) n;
     }
+
+    // 方法一的改进
+    public int solution3(int x) {
+        if (x <= 1)
+            return x;
+
+        // [l:h] 中寻找目标
+        int l = 1, h = x;
+        while (l <= h) {
+            int mid = l + (h - l) / 2;
+            // 用除法而不用乘法，防止溢出
+            int sqrt = x / mid;
+            if (sqrt == mid) {
+                return mid;
+            } else if (mid > sqrt) {
+                // 需要缩小
+                h = mid - 1;
+            } else {
+                // 需要放大
+                l = mid + 1;
+            }
+        }
+        // 返回 l 和 h 的较小值
+        return h;
+    }
 }

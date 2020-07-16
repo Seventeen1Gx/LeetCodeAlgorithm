@@ -16,7 +16,7 @@
 //
 //收获: 复杂的if级联也许可以化简
 
-package src;
+package src.binarySearch;
 
 public class SearchInRotatedSortedArray {
     //看到O(log n)，使用二分查找法
@@ -225,6 +225,31 @@ public class SearchInRotatedSortedArray {
         return -1;
     }
 
+    // 减治法，边界不断缩小，直到得到最后一个元素，然后再看是不是我们要的
+    public int solution2(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int mid = l + (h - l) / 2;
+
+            // 先确定 check(mid)，但由于情况的不确定，所以分两种
+
+            if (nums[l] <= nums[mid]) {
+                // 即 [l,mid] 递增，[mid+1,h] 旋转
+                if (nums[l] <= target && nums[mid] >= target)
+                    h = mid;
+                else
+                    l = mid + 1;
+            } else if (nums[l] > nums[mid]) {
+                // [l:mid] 旋转，[mid+1,h] 递增
+                if (nums[mid+1] <= target && target <= nums[h])
+                    l = mid + 1;
+                else
+                    h = mid;
+            }
+        }
+        return nums[l] == target ? l : -1;
+    }
+
     public static void main(String[] args) {
         SearchInRotatedSortedArray s = new SearchInRotatedSortedArray();
         //s.solution(new int[]{4, 5, 6, 7, 0, 1, 2}, 0);
@@ -234,6 +259,6 @@ public class SearchInRotatedSortedArray {
         //a = s.findRotateCenterIndex(new int[]{2, 3, 4, 1, 1, 1, 1});
         //a = s.findRotateCenterIndex(new int[]{1, 0, 1, 1, 1});
         //a = s.findRotateCenterIndex(new int[]{1, 1, 1, 0, 1});
-        s.solution(new int[]{1, 3}, 3);
+        s.solution2(new int[]{4, 5, 6, 7, 0, 1, 2}, 0);
     }
 }

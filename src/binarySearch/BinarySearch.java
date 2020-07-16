@@ -4,7 +4,7 @@
 // 写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
 
 
-package src;
+package src.binarySearch;
 
 public class BinarySearch {
     // 下面两种方法返回插入位置的话，都是返回 l
@@ -41,5 +41,20 @@ public class BinarySearch {
                 l = mid + 1;
         }
         return -1;
+    }
+
+    // 减治法
+    public int solution_3(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int mid = l + (h - l) / 2;
+            // 将区间分成 [l, mid] 和 [mid+1:h]
+            if (nums[mid] >= target)
+                // 则目标元素肯定在左边（就算有重复元素，我们也是找他的最左出现）
+                h = mid;
+            else
+                l = mid + 1;
+        }
+        return nums[l] == target ? l : -1;
     }
 }

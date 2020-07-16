@@ -7,7 +7,7 @@
 //如果数组中不存在目标值，返回 [-1, -1]。
 
 
-package src;
+package src.binarySearch;
 
 public class FindFirstAndLastPositionOfElementInSortedArray {
     //含重复元素的二分查找法
@@ -140,6 +140,40 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
         }
 
         return lo;
+    }
+
+    // 寻找最左出现
+    private int findFirstAppear(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int mid = l + (h - l) / 2;
+
+            // 区间分成 [l:mid] 和 [mid+1:h] 两个区间
+
+            if (nums[mid] >= target)
+                // target 的最左出现不可能在右区间
+                h = mid;
+            else
+                l = mid + 1;
+        }
+        return nums[l] == target ? l : -1;
+    }
+
+    // 寻找最右出现
+    private int findLastAppear(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int mid = l + (h - l + 1) / 2;
+
+            // nums[mid]==target，最右出现在 mid 和 mid 之右，[l:mid-1] 肯定不是
+            // nums[mid]>target，最右出现在 mid 之前，[mid:h] 肯定不是
+            // nums[mid]<target，最右出现在 mid 之后，[l:mid-1] 肯定不是
+            if (nums[mid] > target)
+                h = mid - 1;
+            else
+                l = mid;
+        }
+        return nums[l] == target ? l : -1;
     }
 
     public static void main(String[] args) {

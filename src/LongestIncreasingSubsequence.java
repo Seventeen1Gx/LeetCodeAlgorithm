@@ -56,22 +56,23 @@ public class LongestIncreasingSubsequence {
         return len;
     }
 
-    // tails[0:len) 中二分寻找 key
+    // tails[0:len) 中二分寻找 key 的最左出现
     // 找到，则返回下标
     // 找不到则返回插入位置
     private int binarySearch(int[] tails, int len, int key) {
-        int l = 0, h = len;
+        // 特判
+        if (len == 0 || tails[len - 1] < key)
+            return len;
+
+        int l = 0, h = len - 1;
         while (l < h) {
-            // l == h 时，不会进入循环
-            // l == h+1 时，mid = l
-            // 其它情况，l < mid < h
-            // 所以，下面 h = mid，因为考虑范围是 [l,h)
             int mid = l + (h - l) / 2;
-            if (tails[mid] == key)
-                return mid;
-            else if (tails[mid] > key)
+
+            if (tails[mid] >= key)
+                // [mid+1,h] 中肯定没有目标
                 h = mid;
             else
+                // [l,mid] 中肯定没有目标
                 l = mid + 1;
         }
         return l;

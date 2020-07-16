@@ -9,7 +9,7 @@
 //本题为33题的延申题，请看33题
 
 
-package src;
+package src.binarySearch;
 
 public class SearchInRotatedSortedArrayNo2 {
     public boolean search(int[] nums, int target) {
@@ -88,5 +88,34 @@ public class SearchInRotatedSortedArrayNo2 {
             }
         }
         return false;
+    }
+
+    // 减治法
+    public boolean solution(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+        while (l < h) {
+            int mid = l + (h - l) / 2;
+            if (nums[l] < nums[mid]) {
+                // [l,mid] 肯定有序
+                if (target >= nums[l] && target <= nums[mid])
+                    h = mid;
+                else
+                    l = mid + 1;
+            } else if (nums[l] > nums[mid]) {
+                // [mid+1,h] 肯定有序
+                if (target >= nums[mid + 1] && target <= nums[h])
+                    l = mid + 1;
+                else
+                    h = mid;
+            } else {
+                // nums[l] == nums[mid]
+                // 这种情况从左边界一个一个排除
+                if (nums[l] == target)
+                    return true;
+                else
+                    l = l + 1;
+            }
+        }
+        return nums[l] == target;
     }
 }

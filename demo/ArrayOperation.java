@@ -60,6 +60,22 @@ public class ArrayOperation {
         return left;
     }
 
+    // 减治法
+    public int binarySearch_4(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            // 分成 [l:mid] 和 [mid+1:r] 两部分
+            if (nums[mid] < target)
+                // 目标元素肯定在右边
+                l = mid + 1;
+            else
+                r = mid;
+        }
+        return l;
+    }
+
+
     /**
      * 交换数组中两元素的位置
      */
@@ -408,6 +424,6 @@ public class ArrayOperation {
 
     public static void main(String[] args) {
         ArrayOperation a = new ArrayOperation();
-        a.binarySearch_2(new int[]{1, 3,3, 5, 7}, 2);
+        a.binarySearch_4(new int[]{1, 3,3, 5, 7}, 5);
     }
 }

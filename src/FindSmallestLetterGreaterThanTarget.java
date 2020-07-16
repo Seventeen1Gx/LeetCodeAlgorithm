@@ -29,4 +29,36 @@ public class FindSmallestLetterGreaterThanTarget {
             return letters[0];
         return letters[l];
     }
+
+    // 根据模板修改
+    public char solution_2(char[] letters, char target) {
+        // [l:r] 中遍历
+        int l = 0, r = letters.length - 1;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+
+            /*
+
+            if (letters[mid] == target)
+                // 说明在右边
+                l = mid + 1;
+            else if (letters[mid] > target)
+                // 说明在左边
+                // 同时 mid 也有可能是结果
+                // 有这样的更新，循环条件就不能有等号，否则会无限循环
+                r = mid;
+            else if (letters[mid] < target)
+                // 说明在右边
+                l = mid + 1;
+
+            */
+
+            // 上面两种情况可以合并
+            if (letters[mid] <= target)
+                l = mid + 1;
+            else
+                r = mid;
+        }
+        return 0;
+    }
 }

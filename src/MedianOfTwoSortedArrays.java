@@ -53,6 +53,10 @@
 package src;
 
 public class MedianOfTwoSortedArrays {
+    // 简单方法一：合并，排序
+    // 简单方法二：归并排序，只需排前面一半的元素即可
+
+
     public double solution1(int[] nums1, int[] nums2) {
         int len = nums1.length + nums2.length;
         if (len % 2 == 0) {
@@ -106,6 +110,7 @@ public class MedianOfTwoSortedArrays {
         int n = nums2.length;
 
         // 保证m小于或等于n，即数组1为小数组
+        // 为了搜索范围更小
         if (m > n) {
             return solution2(nums2, nums1);
         }

@@ -231,16 +231,17 @@ public class SearchInRotatedSortedArray {
         while (l < h) {
             int mid = l + (h - l) / 2;
 
-            // 先确定 check(mid)，但由于情况的不确定，所以分两种
 
-            if (nums[l] <= nums[mid]) {
-                // 即 [l,mid] 递增，[mid+1,h] 旋转
+            // nums[0]==nums[mid] 只能是 mid==0，[l,mid] 递增
+            // nums[0]<nums[mid]，[l,mid] 递增
+            // nums[0]>nums[mid],[mid+1,h] 递增
+
+            if (nums[0] <= nums[mid]) {
                 if (nums[l] <= target && nums[mid] >= target)
                     h = mid;
                 else
                     l = mid + 1;
-            } else if (nums[l] > nums[mid]) {
-                // [l:mid] 旋转，[mid+1,h] 递增
+            } else if (nums[0] > nums[mid]) {
                 if (nums[mid+1] <= target && target <= nums[h])
                     l = mid + 1;
                 else

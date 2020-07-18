@@ -152,7 +152,7 @@
 647. [回文子串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PalindromicSubstrings.java)
 653. [两数之和Ⅳ-输入BST](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/TwoSumNo4InputIsBST.java)
 704. [二分查找](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/BinarySearch.java)
-744. [寻找比目标字母大的最小字母](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FindSmallestLetterGreaterThanTarget.java)
+744. [寻找比目标字母大的最小字母](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/FindSmallestLetterGreaterThanTarget.java)
 785. [判断二分图](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/IsGraphBipartite.java)
 989. [数组形式的整数加法](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/AddToArrayFormOfInteger.java)
 992. [K个不同整数的子数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SubarraysWithKDifferentIntegers.java)

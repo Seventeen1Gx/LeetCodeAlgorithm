@@ -7,7 +7,7 @@
 // 如果目标字母 target = 'z' 并且字符列表为 letters = ['a', 'b']，则答案返回 'a'
 
 
-package src;
+package src.binarySearch;
 
 public class FindSmallestLetterGreaterThanTarget {
     // 寻找 target+1
@@ -30,8 +30,13 @@ public class FindSmallestLetterGreaterThanTarget {
         return letters[l];
     }
 
-    // 根据模板修改
+    // 减治法
     public char solution_2(char[] letters, char target) {
+        // 特判
+        int n = letters.length;
+        if (letters[n-1] < target)
+            return letters[0];
+
         // [l:r] 中遍历
         int l = 0, r = letters.length - 1;
         while (l < r) {
@@ -41,17 +46,25 @@ public class FindSmallestLetterGreaterThanTarget {
 
             if (letters[mid] == target)
                 // 说明在右边
+                // [l,mid] 排除
                 l = mid + 1;
             else if (letters[mid] > target)
                 // 说明在左边
-                // 同时 mid 也有可能是结果
-                // 有这样的更新，循环条件就不能有等号，否则会无限循环
+                // [mid+1,r] 被排除
                 r = mid;
             else if (letters[mid] < target)
                 // 说明在右边
+                // [l,mid] 排除
                 l = mid + 1;
 
             */
+            // 上面是 [l,mid] 和 [mid+1,r] 进行取舍
+            // 另一种是 [l,mid-1] 和 [mid,r]
+            // 假设 l=4,r=5 时，mid=4
+            // [4,3] 和 [4,5]
+            // 更新时，要么 r=mid-1 要么 l=mid
+            // 后者 4=4，不缩小区间，所以有可能无限循环
+            // 故取 mid 的时候要取上界
 
             // 上面两种情况可以合并
             if (letters[mid] <= target)

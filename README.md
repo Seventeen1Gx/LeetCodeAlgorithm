@@ -139,6 +139,7 @@
 287. [寻找重复数](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/FindTheDuplicateNumber.java)
 300. [最长上升子序列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LongestIncreasingSubsequence.java)
 303. [区域和检索-数组不可变](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/RangeSumQueryImmutable.java)
+312. [戳气球](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/BurstBalloons.java)
 336. [回文对](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PalindromePairs.java)
 343. [整数拆分](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/IntegerBreak.java)
 371. [两整数之和](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SumOfTwoIntegers.java)

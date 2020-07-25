@@ -207,7 +207,7 @@ public class MedianOfTwoSortedArrays {
             // 寻找满足 nums1[i-1] <= nums2[j] 且 nums2[j-1] <= nums1[i]
             // 等价于寻找满足 nums1[i-1] <= nums2[j] 的最大 i
             // 证明：
-            // 1. i 在 [0,m] 递增时，nums1[i-1] 增大，nums2[j] 减小，因为此消彼长，故存在这样的最大 i
+            // 1. i 在 [0,m] 递增时，nums1[i-1] 增大，nums2[j] 减小，此消彼长，故存在这样的最大 i
             // 2. 因为最大 i，所以 i+1 时不满足，可以推出 nums1[i] > nums2[j-1]
 
 

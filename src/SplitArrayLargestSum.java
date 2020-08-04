@@ -8,10 +8,13 @@
 // 1 ≤ n ≤ 1000
 // 1 ≤ m ≤ min(50, n)
 
+
+package src;
+
 import java.util.Arrays;
 
 public class SplitArrayLargestSum {
-    public int solution(int[] nums, int m) {
+    public int solution1(int[] nums, int m) {
         // dp[i][j] 表示数组前 i 个数 nums[0,i) 被分成 j 份的情况
         // dp[i][j] 可以是前 k 个数分成 j-1 份，即 dp[k][j-1]，然后和 [k+1,i) 这个子数组的情况组成
         // 即 dp[i][j] = min[max[dp[k][j-1], sum[k,i)]]，k 可取 1、2、3、... 、i-1
@@ -44,5 +47,49 @@ public class SplitArrayLargestSum {
             }
         }
         return dp[n][m];
+    }
+
+    // 贪心 + 二分查找
+    // 我们选定一个 x，然后验证能不能分割数组，使分组和的最大值小于等于这个 x
+    // 然后我们就能找到一个临界 x，小于这个 x 就不满足要求，大于这个 x 就满足要求
+    //
+    // 验证方法我们使用贪心，使一个子数组在满足要求的情况下尽可能多包含元素，如果这种情况都满足，那肯定满足
+    // 从前往后遍历，sum 表示当前统计的子数组的和，当 sum+nums[i]<=x，就加入子数组，否则重新开始一个新数组
+    // 当遍历完成，子数组数小于等于 m 就说明能分出来
+    public int solution2(int[] nums, int m) {
+        int low = 0, high = 0;
+    // 下界取数组元素的最大值
+    // 上界取数组元素总和
+        for (int i = 0; i < nums.length; i++) {
+        low = nums[i] > low ? nums[i] : low;
+        high += nums[i];
+    }
+        while (low < high) {
+        int mid = low + (high - low) / 2;
+        if (valid(nums, m, mid))
+            // 满足要求，x 偏大
+            high = mid;
+        else
+            low = mid + 1;
+    }
+        return low;
+}
+
+    private boolean valid(int[] nums, int m, int x) {
+        int cnt = 1;
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            // 提前退出，没必要算了
+            if (cnt > m)
+                return false;
+
+            if (sum + nums[i] <= x) {
+                sum += nums[i];
+            } else {
+                cnt++;
+                sum = nums[i];
+            }
+        }
+        return cnt <= m;
     }
 }

@@ -67,7 +67,8 @@ public class RestoreIpAddresses {
                 subString = s.substring(start, start + charNum);
                 if (charNum != LOW && subString.charAt(0) == '0') {
                     // "010" 不能作为 ip 地址的一部分
-                    continue;
+                    // 即不允许前导 0
+                    break;
                 }
 
                 num = Integer.parseInt(subString);

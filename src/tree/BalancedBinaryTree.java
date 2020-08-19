@@ -1,6 +1,6 @@
-package src;
+package src.tree;
 
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 
 /**
  * 110. 平衡二叉树

@@ -3,9 +3,9 @@
 // 给定一个二叉树，返回它的 后序 遍历。
 
 
-package src;
+package src.tree;
 
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 
 import java.util.*;
 

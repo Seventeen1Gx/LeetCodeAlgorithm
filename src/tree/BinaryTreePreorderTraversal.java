@@ -1,6 +1,6 @@
-package src;
+package src.tree;
 
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

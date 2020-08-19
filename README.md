@@ -1,4 +1,4 @@
-本仓库文件为解决LeetCode算法题的源码，每道题具有多种解法，笔记以注释的形式存在于代码中。
+本仓库文件为解决 LeetCode 算法题的源码，每道题具有多种解法，笔记以注释的形式存在于代码中。
 
 [1. 两数之和](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/twoSum/TwoSum.java)
 <br/>[2. 两数相加](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/add/AddTowNum.java)
@@ -158,6 +158,7 @@
 <br/>[413. 等差数列划分](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/ArithmeticSlices.java)
 <br/>[415. 字符串相加](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/add/AddStrings.java)
 <br/>[410. 分割数组的最大值](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SplitArrayLargestSum.java)
+<br/>[413. 等差数列划分](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/dp/ArithmeticSlices.java)
 <br/>[445. 两数相加Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/add/AddTwoNumbersNo2.java)
 <br/>[454. 四数之和Ⅱ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FourSumNo2.java)
 <br/>[458. 可怜的小猪](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PoorPig.java)

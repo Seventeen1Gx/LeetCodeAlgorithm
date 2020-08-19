@@ -1,7 +1,7 @@
-package src;
+package src.tree;
 
 import javafx.util.Pair;
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -48,26 +48,6 @@ public class BinaryTreeZigzagLevelOrderTraversal {
             if (treeNode.right != null) {
                 queue.offer(new Pair<>(treeNode.right, level + 1));
             }
-
-            // 第一次的想法
-            // 在进入队列时，保证锯齿形 -- 输出结果错误，比如[1,2,3,4,null,null,5]
-            // if (level % 2 == 0) {
-            //     // 先右后左
-            //     if (treeNode.right != null) {
-            //         queue.offer(new Pair<>(treeNode.right, level + 1));
-            //     }
-            //     if (treeNode.left != null) {
-            //         queue.offer(new Pair<>(treeNode.left, level + 1));
-            //     }
-            // } else {
-            //     // 先左后右
-            //     if (treeNode.left != null) {
-            //         queue.offer(new Pair<>(treeNode.left, level + 1));
-            //     }
-            //     if (treeNode.right != null) {
-            //         queue.offer(new Pair<>(treeNode.right, level + 1));
-            //     }
-            // }
         }
         return ans;
     }

@@ -1,6 +1,6 @@
 package src;
 
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 import src.util.ListNode;
 
 /**

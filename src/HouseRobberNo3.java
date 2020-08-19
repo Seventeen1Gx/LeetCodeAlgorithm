@@ -7,7 +7,7 @@
 
 package src;
 
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 
 public class HouseRobberNo3 {
     // 两种策略

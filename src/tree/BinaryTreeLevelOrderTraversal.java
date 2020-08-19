@@ -1,7 +1,7 @@
-package src;
+package src.tree;
 
 import javafx.util.Pair;
-import src.twoSum.TreeNode;
+import src.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -12,7 +12,7 @@ package src;
  * @version 1.0
  */
 public class BalancedBinaryTree {
-    private static final int MAX_HEIGHT_DIFFERENT = 1;
+    private static final int MAX_HEIGHT_DIFF = 1;
 
     public boolean solution1(TreeNode root) {
         // 当前结点左右子树高度相差不超过 1
@@ -27,7 +27,7 @@ public class BalancedBinaryTree {
         int leftDepth = m.solution1(root.left);
         int rightDepth = m.solution1(root.right);
 
-        if (Math.abs(leftDepth - rightDepth) > MAX_HEIGHT_DIFFERENT) {
+        if (Math.abs(leftDepth - rightDepth) > MAX_HEIGHT_DIFF) {
             return false;
         }
 
@@ -56,7 +56,7 @@ public class BalancedBinaryTree {
             return -1;
         }
 
-        return Math.abs(leftDepth - rightDepth) > MAX_HEIGHT_DIFFERENT ?
+        return Math.abs(leftDepth - rightDepth) > MAX_HEIGHT_DIFF ?
                 -1 : Math.max(leftDepth, rightDepth) + 1;
     }
 }

@@ -1,4 +1,6 @@
-package src;
+package src.tree;
+
+import src.util.TreeNode;
 
 /**
  * 110. 平衡二叉树

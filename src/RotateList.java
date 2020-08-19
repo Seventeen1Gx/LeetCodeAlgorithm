@@ -14,6 +14,8 @@
 
 package src;
 
+import src.util.ListNode;
+
 public class RotateList {
     //向右移动k个位置，就是将结尾k个结点放到开头
     //先首尾相连，组成一个环，然后找到切割点

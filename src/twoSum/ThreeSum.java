@@ -1,4 +1,4 @@
-package src;
+package src.twoSum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,8 +40,9 @@ public class ThreeSum {
             a = nums[i];
 
             // 因为我们保证结果中 a<=b<=c，若 a>0，三数之和一定大于 0 了
+            // 又 a 是递增获取的，所以遍历也可以结束了
             if (a > 0) {
-                continue;
+                break;
             }
 
             // 在 a 之后的元素中使用首尾指针法选择 b+c=-a

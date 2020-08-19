@@ -10,7 +10,9 @@
 // 思路：用栈或者递归反向操作
 
 
-package src;
+package src.add;
+
+import src.util.ListNode;
 
 import java.util.Stack;
 
@@ -88,8 +90,8 @@ public class AddTwoNumbersNo2 {
         return ans;
     }
 
-    // recursion返回值为l1和l2两链相加结果存在长度为max(len1,len2)的结果链上，返回为结果链存不下的最高位进位，这个最高位进位我们作为返回结果返回
-    // ans作为全局变量，得到ans是recursion函数的一个附加功能
+    // recursion 返回值为 l1 和 l2 两链相加结果存在长度为 max(len1,len2) 的结果链上，返回为结果链存不下的最高位进位，这个最高位进位我们作为返回结果返回
+    // ans 作为全局变量，得到 ans 是recursion函数的一个附加功能
     //
     // 思路：
     // 计算当前对应结点的结果，先计算其之后尾链得到的结果，然后再接回去，用的链表的头接法
@@ -99,20 +101,20 @@ public class AddTwoNumbersNo2 {
             // 长度对齐时
 
             if (len1 == 0) {
-                // 长度为0的两链相加，不对ans产生影响，且进位为0
+                // 长度为 0 的两链相加，不对 ans 产生影响，且进位为 0
                 return 0;
             }
 
             // 先去计算尾串相加的结果
             carry = recursion(l1.next, len1 - 1, l2.next, len2 - 1);
-            // 计算当前位置的结果，然后接在ans之前
+            // 计算当前位置的结果，然后接在 ans 之前
             res = l1.val + l2.val + carry;
         } else if (len1 > len2) {
-            // 长度不对齐时，将短链前面视为带有值为0的结点
+            // 长度不对齐时，将短链前面视为带有值为 0 的结点
             carry = recursion(l1.next, len1 - 1, l2, len2);
             res = l1.val + carry;
         } else {
-            // 转到len1 > len2
+            // 转到 len1 > len2
             return recursion(l2, len2, l1, len1);
         }
 

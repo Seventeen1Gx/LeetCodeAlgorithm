@@ -9,7 +9,7 @@
 // - 不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。
 
 
-package src;
+package src.add;
 
 public class MultiplyStrings {
     private static final String ZERO = "0";

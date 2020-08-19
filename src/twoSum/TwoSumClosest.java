@@ -1,4 +1,4 @@
-package demo;
+package src.twoSum;
 
 import java.util.Arrays;
 

@@ -1,4 +1,6 @@
-package src;
+package src.tree;
+
+import src.util.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

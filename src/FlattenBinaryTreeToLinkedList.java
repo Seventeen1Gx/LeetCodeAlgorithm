@@ -1,5 +1,7 @@
 package src;
 
+import src.util.TreeNode;
+
 /**
  * 114. 二叉树展开为链表
  *

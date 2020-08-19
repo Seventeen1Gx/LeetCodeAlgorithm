@@ -1,5 +1,7 @@
 package src;
 
+import src.util.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 

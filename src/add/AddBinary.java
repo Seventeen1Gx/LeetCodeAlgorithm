@@ -5,7 +5,7 @@
 // 输入为非空字符串且只包含数字 1 和 0。
 
 
-package src;
+package src.add;
 
 public class AddBinary {
     public String solution(String a, String b) {

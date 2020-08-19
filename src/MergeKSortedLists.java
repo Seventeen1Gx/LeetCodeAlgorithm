@@ -5,6 +5,8 @@
 
 package src;
 
+import src.util.ListNode;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 

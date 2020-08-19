@@ -77,13 +77,15 @@ public class BurstBalloons {
     }
 
     private int solve(int i, int j) {
-        if (j - 1 - i <= 0)
+        if (j - 1 - i <= 0) {
             // 区间 [i+1, j-1] 之中没有气球可以选
             return 0;
+        }
 
-        if (rem[i][j] != -1)
+        if (rem[i][j] != -1) {
             // 已经求过了
             return rem[i][j];
+        }
 
         // 在区间 [i+1, j-1] 中选择添加的气球
         for (int mid = i + 1; mid < j; mid++) {

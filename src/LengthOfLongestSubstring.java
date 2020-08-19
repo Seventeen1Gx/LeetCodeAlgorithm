@@ -3,7 +3,7 @@
 // 给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。
 //
 // 思路
-// 第一个想法是遍历所有子串--O(n^2)，看是不是无重复--O(n)，但可以从大到小查询每个字串，找到就返回，但这个最差时间复杂度为O(n^3)
+// 第一个想法是遍历所有子串 -- O(n^2)，看是不是无重复 -- O(n)，但可以从大到小查询每个字串，找到就返回，但这个最差时间复杂度为 O(n^3)
 // 后来上网查询发现另一个叫滑动窗口的方法
 
 
@@ -17,7 +17,7 @@ import java.util.Set;
 public class LengthOfLongestSubstring {
     // 其实是暴力法，试验每个子串，只不过做了剪枝
     public int solution1(String s) {
-        // i，j确定子串s[i:j)
+        // i，j 确定子串 s[i:j)
         int i = 0, j = 1;
         // 最长无重复子串的长度至少为1
         int max = 1;
@@ -45,19 +45,19 @@ public class LengthOfLongestSubstring {
         return max;
     }
 
-    // 跟方法1的切换窗口的思路不同
+    // 跟方法 1 的切换窗口的思路不同
     public int solution1_official(String s) {
         int n = s.length();
         // set始终保存着s[i,j)中的字符
         Set<Character> set = new HashSet<>();
-        // i，j确定子串s[i:j)
+        // i，j 确定子串 s[i:j)
         int ans = 0, i = 0, j = 0;
         while (i < n && j < n) {
             if (!set.contains(s.charAt(j))) {
                 set.add(s.charAt(j++));
                 ans = Math.max(ans, j - i);
             } else {
-                // 目前已有j所指元素时，则移动左边界，直到这个重复元素被排出窗口
+                // 目前已有 j 所指元素时，则移动左边界，直到这个重复元素被排出窗口
                 set.remove(s.charAt(i++));
             }
         }
@@ -65,16 +65,16 @@ public class LengthOfLongestSubstring {
     }
 
     // 滑动窗口优化法
-    // 想想acbab，普通滑动窗口法若统计到第二个b的时候发现重复，则令i从第二个元素开始重新算，但又会发现b重复
-    // 然后令i从第三个元素开始，也一样，所以不如直接让i变为第一个b元素的下一个位置
+    // 想想 acbab，普通滑动窗口法若统计到第二个 b 的时候发现重复，则令 i 从第二个元素开始重新算，但又会发现 b 重复
+    // 然后令 i 从第三个元素开始，也一样，所以不如直接让 i 变为第一个 b 元素的下一个位置
     public int solution2FromOfficial(String s) {
         int n = s.length(), ans = 0;
-        // Map记录了子串s[i:j)中的字符以及这些字符所处位置的下一位置
+        // Map 记录了子串 s[i:j) 中的字符以及这些字符所处位置的下一位置
         Map<Character, Integer> map = new HashMap<>(s.length());
         // 窗口从空串开始
         for (int j = 0, i = 0; j < n; j++) {
             if (map.containsKey(s.charAt(j))) {
-                // 出现重复，令i从这个重复的元素的下一位置开始
+                // 出现重复，令 i 从这个重复的元素的下一位置开始
                 i = Math.max(map.get(s.charAt(j)), i);
             }
             ans = Math.max(ans, j - i + 1);

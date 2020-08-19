@@ -5,7 +5,7 @@
 // 给定非负整数 X 的数组形式 A，返回整数 X+K 的数组形式。
 
 
-package src;
+package src.add;
 
 import java.util.ArrayList;
 import java.util.Collections;

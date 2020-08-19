@@ -1,4 +1,4 @@
-package src;
+package src.twoSum;
 
 /**
  * 167. 两数之和Ⅱ - 输入有序数组

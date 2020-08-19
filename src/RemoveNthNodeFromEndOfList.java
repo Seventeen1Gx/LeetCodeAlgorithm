@@ -17,6 +17,8 @@
 
 package src;
 
+import src.util.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {

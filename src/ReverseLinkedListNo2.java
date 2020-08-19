@@ -1,5 +1,7 @@
 package src;
 
+import src.util.ListNode;
+
 /**
  * 92. 反转链表Ⅱ
  *

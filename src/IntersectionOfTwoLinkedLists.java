@@ -1,5 +1,7 @@
 package src;
 
+import src.util.ListNode;
+
 /**
  * 160. 相交链表
  *

@@ -5,6 +5,8 @@
 
 package src;
 
+import src.twoSum.TreeNode;
+
 import java.util.*;
 
 public class BinaryTreePostorderTraversal {

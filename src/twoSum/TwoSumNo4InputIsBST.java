@@ -1,4 +1,6 @@
-package src;
+package src.twoSum;
+
+import src.util.TreeNode;
 
 /**
  * 653. 两数之和Ⅳ - 输入BST
@@ -58,12 +60,3 @@ public class TwoSumNo4InputIsBST {
 }
 
 
-/**
- * 树结点的定义
- */
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
-}

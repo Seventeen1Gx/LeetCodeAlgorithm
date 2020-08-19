@@ -10,6 +10,8 @@
 
 package src;
 
+import src.util.ListNode;
+
 public class PartitionList {
     //先拆后接
     public ListNode solution(ListNode head, int x) {

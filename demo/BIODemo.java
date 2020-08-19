@@ -94,7 +94,6 @@ public class BIODemo {
                 dp = new DatagramPacket(data, data.length, InetAddress.getLocalHost(), 7831);
                 ds.send(dp);
             }
-
         }
     }
 }

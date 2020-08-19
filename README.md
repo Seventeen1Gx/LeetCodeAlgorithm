@@ -166,12 +166,8 @@
 <br/>[460. LFU 缓存](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LFUCache.java)
 <br/>[496. 下一个更大元素Ⅰ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/NextGreaterElement.java)
 <br/>[516. 最长回文子序列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LongestPalindromicSubsequence.java)
-<<<<<<< HEAD
 <br/>[546. 移除盒子](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/RemoveBoxes.java)
-<br/>[560. 和为K的子数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SubarraySumEqualsK.java)
-=======
 <br/>[560. 和为K的子数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/twoSum/SubarraySumEqualsK.java)
->>>>>>> bab12adf1895a73d251508d195227403e2561c71
 <br/>[632. 最小区间](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SmallestRangeCoveringElementsFromKLists.java)
 <br/>[646. 最长数对链](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/MaximumLengthOfPairChain.java)
 <br/>[647. 回文子串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PalindromicSubstrings.java)
@@ -179,13 +175,9 @@
 <br/>[658. 找到 K 个最接近的元素](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FindKClosestElements.java)
 <br/>[696. 计数二进制字串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/CountBinarySubstrings.java)
 <br/>[704. 二分查找](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/BinarySearch.java)
-<<<<<<< HEAD
-<br/>[733. 图像渲染](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/BinarySearch.java)
-<br/>[744. 寻找比目标字母大的最小字母](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/FloodFill.java)
-=======
+<br/>[733. 图像渲染](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/FloodFill.java)
 <br/>[739. 每日温度](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/DailyTemperatures)
 <br/>[744. 寻找比目标字母大的最小字母](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/FindSmallestLetterGreaterThanTarget.java)
->>>>>>> bab12adf1895a73d251508d195227403e2561c71
 <br/>[785. 判断二分图](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/IsGraphBipartite.java)
 <br/>[852. 山脉数组的顶峰索引](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/PeakIndexInAMountainArray.java)
 <br/>[875. 爱吃香蕉的珂珂](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/binarySearch/KokoEatingBananas.java)

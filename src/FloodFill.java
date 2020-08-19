@@ -77,4 +77,58 @@ public class FloodFill {
         }
         return image;
     }
+
+
+
+
+    public static void main(String[] args) {
+        int a = solution(7, new int[]{0, 1, 1, 2, 2, 3, 3});
+        int b = 0;
+    }
+
+    public static int solution(int n, int[] depth) {
+        // 表示深度为 x 的结点有几个
+        Map<Integer, Integer> map = new HashMap<>();
+        int maxDepth = 0;
+        for (int x : depth) {
+            map.put(x, map.getOrDefault(x, 0) + 1);
+            if (x > maxDepth) {
+                maxDepth = x;
+            }
+        }
+
+        // 第 0 层，1 个位置挑
+        // 第 i 层，第 i - 1 层结点数 * 2 挑
+        int choice = 1;
+        int ret = 1;
+        for (int i = 0; i <= maxDepth; i++) {
+            int choiced = map.getOrDefault(i, 0);
+            if (choiced == 0) {
+                return 0;
+            }
+            int result = c(choice, choiced);
+            if (result == -1) {
+                return 0;
+            }
+            ret *= result;
+            choice = choiced * 2;
+        }
+
+        return ret % ((1 << 9) + 7);
+
+    }
+
+    public static int c(int n, int k) {
+        if (k > n) {
+            return -1;
+        }
+        if (k == 0 || k == 0) {
+            return 1;
+        }
+        double ret = 1;
+        for (int i = 0; i < k; i++) {
+            ret *= 1.0 * (n - i) / (k - i);
+        }
+        return (int) ret;
+    }
 }

@@ -166,6 +166,7 @@
 <br/>[460. LFU 缓存](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LFUCache.java)
 <br/>[496. 下一个更大元素Ⅰ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/NextGreaterElement.java)
 <br/>[516. 最长回文子序列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LongestPalindromicSubsequence.java)
+<br/>[529. 扫雷游戏](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/Minesweeper.java)
 <br/>[546. 移除盒子](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/RemoveBoxes.java)
 <br/>[560. 和为K的子数组](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/twoSum/SubarraySumEqualsK.java)
 <br/>[632. 最小区间](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/SmallestRangeCoveringElementsFromKLists.java)

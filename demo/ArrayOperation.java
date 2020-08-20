@@ -51,10 +51,11 @@ public class ArrayOperation {
         int left = 0, right = nums.length - 1, mid;
         while (left < right) {
             mid = left + (right - left) / 2;
-            if (nums[mid] >= target)
+            if (nums[mid] >= target) {
                 right = mid;
-            else
+            } else {
                 left = mid + 1;
+            }
         }
         // 这也是插入位置
         return left;
@@ -66,11 +67,12 @@ public class ArrayOperation {
         while (l < r) {
             int mid = l + (r - l) / 2;
             // 分成 [l:mid] 和 [mid+1:r] 两部分
-            if (nums[mid] < target)
+            if (nums[mid] < target) {
                 // 目标元素肯定在右边
                 l = mid + 1;
-            else
+            } else {
                 r = mid;
+            }
         }
         return l;
     }
@@ -101,15 +103,15 @@ public class ArrayOperation {
 
     public void selectSort2(int[] nums) {
         // 一次性确定两个数
-        for (int i = 0, j = 0; i < nums.length - j; i++, j++) {
+        for (int i = 0; i < nums.length / 2; i++) {
             int min = i;
-            int max = nums.length - j - 1;
-            for (int k = i + 1; k < nums.length - j - 1; k++) {
+            int max = nums.length - i - 1;
+            for (int k = i + 1; k < nums.length - i - 1; k++) {
                 min = nums[min] < nums[k] ? min : k;
                 max = nums[max] > nums[k] ? max : k;
             }
             swap(nums, min, i);
-            swap(nums, max, nums.length - j - 1);
+            swap(nums, max, nums.length - i - 1);
         }
     }
 
@@ -161,8 +163,8 @@ public class ArrayOperation {
         for (int i = 1; i < nums.length; i++) {
             int temp = nums[i];
             int insertIndex = binarySearch_1(Arrays.copyOf(nums, i), temp);
-            for (int j = i; j > insertIndex ; j--) {
-                nums[j] = nums[j - 1];
+            if (i - insertIndex >= 0) {
+                System.arraycopy(nums, insertIndex, nums, insertIndex + 1, i - insertIndex);
             }
             nums[insertIndex] = temp;
         }

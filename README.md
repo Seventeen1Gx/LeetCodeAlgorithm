@@ -165,6 +165,7 @@
 <br/>[458. 可怜的小猪](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/PoorPig.java)
 <br/>[459. 重复的子字符串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/RepeatedSubstringPattern.java)
 <br/>[460. LFU 缓存](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LFUCache.java)
+<br/>[491. 递增子序列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/IncreasingSubsequences.java)
 <br/>[496. 下一个更大元素Ⅰ](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/NextGreaterElement.java)
 <br/>[516. 最长回文子序列](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/LongestPalindromicSubsequence.java)
 <br/>[546. 移除盒子](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/RemoveBoxes.java)

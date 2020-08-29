@@ -1,4 +1,4 @@
-//84. 柱状图中的最大矩形
+// 84. 柱状图中的最大矩形
 //
 // 给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
 //
@@ -7,14 +7,15 @@
 
 package src;
 
-
 import java.util.Stack;
 
 public class LargestRectangleInHistogram {
-    // 中心扩散法：每次假定中心是最终矩形的高
     public int solution1(int[] heights) {
+        // 中心扩散法：每次假定中心是最终矩形的高
+
         int maxArea = 0, area;
 
+        // 记录结果是由哪两列决定的
         // int ansLeft = -1, ansRight = -1;
 
         for (int i = 0; i < heights.length; i++) {
@@ -41,25 +42,25 @@ public class LargestRectangleInHistogram {
         return maxArea;
     }
 
-    // 分治(左边、右边、穿过中间)
-    // 而这里的中间并不是 mid，而是 minHeight 那个柱子
     public int solution2(int[] heights) {
+        // 分治（左边、右边、穿过中间）
+        // 而这里的中间并不是 mid，而是 minHeight 那个柱子
         if (heights == null || heights.length == 0) {
             return 0;
         }
         return recursion(heights, 0, heights.length - 1);
     }
 
-    // 求 [left, right] 之间柱状图的最大矩形
     private int recursion(int[] heights, int left, int right) {
+        // 求 [left, right] 之间柱状图的最大矩形
         if (left == right) {
             return heights[left];
         } else if (left < right) {
             // 寻求 [left, right] 范围内最小柱子高度
             int mid = getIndexOfMinHeight(heights, left, right);
-            //左边
+            // 左边
             int leftMaxArea = recursion(heights, left, mid - 1);
-            //右边
+            // 右边
             int rightMaxArea = recursion(heights, mid + 1, right);
             // 穿过中间
             int minHeight = heights[mid];
@@ -78,11 +79,10 @@ public class LargestRectangleInHistogram {
         }
     }
 
-    // 返回 [left, right] 范围内最小柱子高度所在的列
     private int getIndexOfMinHeight(int[] heights, int left, int right) {
+        // 返回 [left, right] 范围内最小柱子高度所在的列
         int minHeight = Integer.MAX_VALUE;
         int ans = -1;
-
         for (int i = left; i <= right; i++) {
             if (heights[i] < minHeight) {
                 minHeight = heights[i];
@@ -100,7 +100,7 @@ public class LargestRectangleInHistogram {
     // 出栈时，计算矩形大小（不涉及当前元素）
     // 当前元素入栈
     public int solution3_official(int[] heights) {
-        Stack <Integer> stack = new Stack< >();
+        Stack<Integer> stack = new Stack<>();
         stack.push(-1);
         int maxarea = 0;
         for (int i = 0; i < heights.length; ++i) {

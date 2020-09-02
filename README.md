@@ -206,3 +206,4 @@
 <br/>[LCP 13. 寻宝](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/XunBao.java)
 <br/>[面试题 08.03. 魔术索引](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/MagicIndex.java)
 <br/>[面试题 17.21. 直方图的水量](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/VolumeOfHistogram.java)
+<br/>[剑指 Offer 20. 表示数值的字符串](https://github.com/Seventeen1Gx/LeetCodeAlgorithm/blob/master/src/isNumberForString.java)

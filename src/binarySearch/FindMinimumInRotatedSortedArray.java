@@ -12,25 +12,29 @@
 package src.binarySearch;
 
 public class FindMinimumInRotatedSortedArray {
-    // 不是针对目标，而是针对排除
     public int solution(int[] nums) {
         int n = nums.length;
 
         // 先排除不旋转的情况
-        if (nums[0] < nums[n - 1])
+        if (n == 1 || nums[0] < nums[n - 1]) {
             return nums[0];
+        }
 
-        int low = 0, high = n - 1;
+        // [1, n-1] 分成左右两个区间，分界点是我们的答案
+        // [1, i] [i+1, n-1]
+        // 第一个区间的元素都大于 nums[0]
+        // 第二个区间的元素都小于 nums[0] → mid 需要保留
+
+        int low = 1, high = n - 1;
         while (low < high) {
             int mid = low + (high - low) / 2;
 
-            // [low,mid]  [mid+1,high]
-            if (nums[0] <= nums[mid])
-                // [low:mid] 是递增数组，目标值一定不在这个里面
-                low = mid + 1;
-            else
-                // [mid:high] 是递增数组，目标值一定不在 [mid+1,high]
+
+            if (nums[mid] < nums[0]) {
                 high = mid;
+            } else {
+                low = mid + 1;
+            }
         }
         return nums[low];
     }

@@ -14,26 +14,30 @@ package src.binarySearch;
 public class FindMinimumInRotatedSortedArrayNo2 {
     public int solution(int[] nums) {
         int n = nums.length;
-        if (nums[0] < nums[n - 1])
+        // 排除不存在旋转的情况
+        if (n == 1 || nums[0] < nums[n - 1]) {
             return nums[0];
+        }
 
-        int low = 0, high = n - 1;
+        int low = 1, high = n - 1;
         while (low < high) {
             int mid = low + (high - low) / 2;
 
-            if (nums[0] < nums[mid])
-                // [low,mid] 肯定不包含目标
+            if (nums[0] < nums[mid]) {
+
                 low = mid + 1;
-            else if (nums[0] > nums[mid])
-                // [mid+1,high] 肯定不包含目标
+            } else if (nums[0] > nums[mid]) {
                 high = mid;
-            else {
+            } else {
                 // 这时无法判断 num[mid] 在哪一部分
-                // 边界一点一点地收缩
-                if (low > 0 && nums[low] < nums[low - 1])
+                // 判断区间线性收缩
+                // 如果 low 是答案就返回
+                // 如果 low 不是答案就排除
+                if (low > 0 && nums[low] < nums[low - 1]) {
                     return nums[low];
-                else
+                } else {
                     low = low + 1;
+                }
             }
         }
         return nums[low];

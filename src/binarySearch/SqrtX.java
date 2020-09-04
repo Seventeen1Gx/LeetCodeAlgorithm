@@ -8,9 +8,8 @@
 package src.binarySearch;
 
 public class SqrtX {
-    public int solution1(int x) {
+    public int solution(int x) {
         // 注意溢出
-
         if (x == 0) {
             return 0;
         }
@@ -21,24 +20,19 @@ public class SqrtX {
 
         // 一个数的平方根不会超过其一半
         // 在 [2, x/2] 中二分查找
-        int low = 2, high = x / 2;
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            double a = Math.pow(mid, 2);
-            double b = Math.pow(mid + 1, 2);
-            // 首先有a<b
-            if (a <= x && b > x) {
-                // a<=x<b
-                return mid;
-            } else if (b <= x) {
-                // a<b<=x
-                low = mid + 1;
+        // [2, i] [i+1, x/2]   i 是答案
+        // mid 在第一个区间时，mid * mid <= x
+        // mid 在第二个区间时，mid * mid > x
+        long low = 2, high = x / 2;
+        while (low < high) {
+            long mid = (low + high + 1) / 2;
+            if (mid * mid <= x) {
+                low = mid;
             } else {
-                // x<a<b
                 high = mid - 1;
             }
         }
-        return 0;
+        return (int)low;
     }
 
     public int solution2(int a) {
@@ -62,54 +56,18 @@ public class SqrtX {
     }
 
     public int solution3(int x) {
-        if (x <= 1) {
-            return x;
-        }
-
-        // 方法一的改进
-
-        // [l:h] 中寻找目标
-        int l = 1, h = x;
-        while (l <= h) {
-            int mid = l + (h - l) / 2;
-            // 用除法而不用乘法，防止溢出
-            int sqrt = x / mid;
-            if (sqrt == mid) {
-                return mid;
-            } else if (mid > sqrt) {
-                // 需要缩小
-                h = mid - 1;
-            } else {
-                // 需要放大
-                l = mid + 1;
-            }
-        }
-        // 返回 l 和 h 的较小值
-        return h;
-    }
-
-    public int solution4(int x) {
-        // 减治法
         if (x == 0) {
             return 0;
         }
 
-        // [1, x/2] 中二分查找结果值
-        // 结果值在递增的过程中，从偏小到偏大，中间有一处分界值
-        // 于是我们找到小于等于分界值的最大结果
-
         int low = 1, high = x / 2;
         while (low < high) {
             int mid = low + (high - low + 1) / 2;
-            // [low,mid-1] [mid,high]
-
+            // 防溢出
             int sqrt = x / mid;
 
-            // 如果 mid 偏大，sqrt 偏小
-            // 正确答案 mid<=sqrt
-
             if (mid <= sqrt) {
-                // mid 偏小，将小的剔除，同时保留 mid，因为正确答案也在这个区间
+                // mid 偏小，将小的剔除，同时保留 mid
                 low = mid;
             } else {
                 high = mid - 1;
@@ -118,7 +76,7 @@ public class SqrtX {
         return low;
     }
 
-    public static double solution5(int x, int p) {
+    public static double solution4(int x, int p) {
         // 带精度的减治法
         double low = 0, high = x / 2.0, mid;
         double precision = Math.pow(0.1, p);
@@ -137,16 +95,12 @@ public class SqrtX {
         }
     }
 
-    public static double solution6(int x, int p) {
+    public static double solution5(int x, int p) {
         double n = x;
         double precision = Math.pow(0.1, p);
         while (Math.abs(x / n - x) > precision) {
             n = (n + x / n) / 2;
         }
         return n;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(String.format("%.2f", solution5(5, 2)));
     }
 }

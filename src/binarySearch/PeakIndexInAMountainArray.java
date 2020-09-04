@@ -13,14 +13,17 @@ public class PeakIndexInAMountainArray {
     public int solution(int[] mountain) {
         // 由题意，山顶一定存在
         // 且不会是首尾
+
+        // [l, h]
+        // [l, i] [i+1, h], i+1 是答案
+        // 猜测的 mid，如果 mountain[mid] < mountain[mid+1]，说明在左边
+
         int l = 1, h = mountain.length - 2;
         while (l < h) {
             int mid = l + (h - l) / 2;
-            if (mountain[mid - 1] < mountain[mid] && mountain[mid] < mountain[mid + 1]) {
-                // mid 在左边上升范围，[l,mid] 可排除
+            if (mountain[mid] < mountain[mid + 1]) {
                 l = mid + 1;
             } else {
-                // mid 不在左边上升范围，[mid+1,h] 可排除
                 h = mid;
             }
         }

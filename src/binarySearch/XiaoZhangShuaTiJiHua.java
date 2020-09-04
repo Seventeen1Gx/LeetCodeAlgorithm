@@ -11,34 +11,40 @@
 package src.binarySearch;
 
 public class XiaoZhangShuaTiJiHua {
-    // 想象成将 time 数组分成 m 个子数组，每组扣除最大值，剩下的元素之和就是刷完该组题的要花的时间，则 T 取分组所花时间的最大值即可
-    // 如何找到使 T 最小的分组
-    // 这样就转变成了题号 410 类似的问题
     public int solution(int[] time, int m) {
-        if (time == null || time.length == 0)
+        // 想象成将 time 数组分成 m 个子数组，每组扣除最大值，剩下的元素之和就是刷完该组题的要花的时间，则 T 取分组所花时间的最大值即可
+        // 如何找到使 T 最小的分组
+        // 这样就转变成了题号 410 类似的问题
+
+        if (time == null || time.length == 0) {
             throw new IllegalArgumentException();
+        }
 
         int n = time.length;
-        if (m >= n)
+        if (m >= n) {
             // 每天让小杨刷一题就行了
             return 0;
+        }
 
         int low = 0, high = 0;
-        for (int t : time)
+        for (int t : time) {
             high += t;
+        }
         while (low < high) {
             int mid = low + (high - low) / 2;
-            if (valid(time,m, mid))
+            if (valid(time, m, mid)) {
                 // 说明 mid 偏大
                 high = mid;
-            else
+            } else {
                 low = mid + 1;
+            }
         }
         return low;
     }
 
-    // 贪心的话，让一组中耗时最多的那题给小林做
     private boolean valid(int[] time, int m, int x) {
+        // 贪心的话，让一组中耗时最多的那题给小林做
+
         // 目前统计的是第 cnt 个子数组
         // 目前统计的子数组小张需要耗时为 sum
         // 目前决定让小杨做的题的耗时是 max
@@ -50,8 +56,9 @@ public class XiaoZhangShuaTiJiHua {
         int i = 0;
         while (i < time.length) {
             // 提前退出
-            if (cnt > m)
+            if (cnt > m) {
                 return false;
+            }
 
             // 遍历到题目 i，有给小杨做或者不给小杨做两种情况
             // 只有在 time[i] > max 时给小杨做才划算
@@ -85,10 +92,5 @@ public class XiaoZhangShuaTiJiHua {
             }
         }
         return cnt <= m;
-
-    }
-
-    public static void main(String[] args) {
-        new XiaoZhangShuaTiJiHua().valid(new int[]{1, 2, 3, 3}, 2, 4);
     }
 }

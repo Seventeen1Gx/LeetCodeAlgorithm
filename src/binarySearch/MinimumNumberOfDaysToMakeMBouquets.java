@@ -33,40 +33,46 @@
 // 显然，我们可以用不同的方式制作两束花。
 
 
-
 package src.binarySearch;
 
 public class MinimumNumberOfDaysToMakeMBouquets {
-    // 由题意，获得以下情报
-    // 1. 当 n < m*k 时，制作不出花 → 于是我们只考虑 n >= m*k 的情况
-    // 2. 当等待时间够长，所有花都盛开，一定能制作出花束 → 搜索的上界是 bloomDay 的最大值
-    //
-    // 验证在 x 天时，能不能制作出花束
-    // 如果能，说明大于等于 x 天的情况下都能
-    // 如果不能，说明小于 x 天的情况下都不能
-    // 即 x 递增过程中，有一处临界点，该临界点，就是最小需要等待的天数
     public int minDays(int[] bloomDay, int m, int k) {
-        if (bloomDay.length < m * k)
+        // 由题意，获得以下情报
+        // 1. 当 n < m*k 时，制作不出花 → 于是我们只考虑 n >= m*k 的情况
+        // 2. 当等待时间够长，所有花都盛开，一定能制作出花束 → 搜索的上界是 bloomDay 的最大值
+        //
+        // 验证在 x 天时，能不能制作出花束
+        // 如果能，说明大于等于 x 天的情况下都能
+        // 如果不能，说明小于 x 天的情况下都不能
+        // 即 x 递增过程中，有一处临界点，该临界点，就是最小需要等待的天数
+        // [1,max]
+        // [1, i] [i+1, max]  i+1 是答案
+
+        if (bloomDay.length < m * k) {
             return -1;
+        }
 
         int low = 1;
         int high = 0;
-        for (int b : bloomDay)
+        for (int b : bloomDay) {
             high = Math.max(high, b);
+        }
         while (low < high) {
             int mid = low + (high - low) / 2;
-            if (valid(bloomDay, m, k, mid))
+            if (valid(bloomDay, m, k, mid)) {
                 // 说明天数偏大
                 high = mid;
-            else
+            } else {
                 low = mid + 1;
+            }
         }
         return low;
     }
 
-    // 验证在第 x 天，能不能制作出花束
-    // 采用贪心，从前往后遍历，能作出一束花束，我们就制作
     private boolean valid(int[] bloomDay, int m, int k, int x) {
+        // 验证在第 x 天，能不能制作出花束
+        // 采用贪心，从前往后遍历，能作出一束花束，我们就制作
+
         // 已经制作了 cnt 束花
         int cnt = 0;
         // 已经发现相邻的且开花的花
@@ -75,8 +81,9 @@ public class MinimumNumberOfDaysToMakeMBouquets {
         int i = 0;
         while (i < bloomDay.length) {
             // 提前退出
-            if (cnt >= m)
+            if (cnt >= m) {
                 return true;
+            }
 
             if (bloomDay[i] <= x) {
                 // 说明当前遍历到的这朵花成熟了
@@ -92,9 +99,5 @@ public class MinimumNumberOfDaysToMakeMBouquets {
             i++;
         }
         return cnt >= m;
-    }
-
-    public static void main(String[] args) {
-        new MinimumNumberOfDaysToMakeMBouquets().valid(new int[]{1, 10, 3, 10, 2}, 3, 1, 2);
     }
 }

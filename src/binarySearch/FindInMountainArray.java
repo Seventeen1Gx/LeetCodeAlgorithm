@@ -24,6 +24,11 @@ public class FindInMountainArray {
     // 然后分成两个数组寻找目标值
 
     public int solution(int target, MountainArray mountainArr) {
+        // [0, n-1] 分成两部分，分界点是我们想求的答案
+        // [0, i] [i+1, n-1]
+        // 第一个区间的元素都有 mid < nex
+        // 第二个区间的元素都有 mid > nex → 需要保留 mid
+
         int low = 0, high = mountainArr.length() - 1, mountainTop;
         while (low < high) {
             // 首先进入循环时，[low,high] 一定有 2 个以上的元素
@@ -37,55 +42,66 @@ public class FindInMountainArray {
             // 那么有下面两种情况
             // mid < nex，说明 mid 在左边，山顶在 [midIndex+1,high] 中
             // mid > nex，说明 mid 在右边，山顶在 [low,midIndex] 中
-            if (mid < nex)
+            if (mid < nex) {
                 low = midIndex + 1;
-            else
+            } else {
                 high = midIndex;
+            }
         }
         // 山顶一定存在
         mountainTop = low;
-        // 先在左边找，找不到再去右边
 
-        low = 0;
-        high = mountainTop;
-        while (low < high) {
+        // 先在左边找，找不到再去右边
+        int retIndex = findIncrease(mountainArr, 0, mountainTop, target);
+
+        if (retIndex != -1) {
+            return retIndex;
+        } else {
+            return findDecrease(mountainArr, mountainTop + 1, mountainArr.length() - 1, target);
+        }
+    }
+
+    private int findIncrease(MountainArray mountainArr, int low, int high, int target) {
+        while (low <= high) {
             int midIndex = low + (high - low) / 2;
             int mid = mountainArr.get(midIndex);
-            // [low,midIndex] [midIndex+1,high]
 
-            if (mid >= target)
-                // [midIndex+1,high] 肯定不是
-                high = midIndex;
-            else
-                // mid < target，[low,midIndex] 肯定不是
+            if (mid == target) {
+                return midIndex;
+            } else if (mid > target) {
+                high = midIndex - 1;
+            } else {
                 low = midIndex + 1;
-        }
-
-        if (mountainArr.get(low) == target) {
-            return low;
-        } else {
-            low = mountainTop + 1;
-            high = mountainArr.length() - 1;
-            while (low < high) {
-                int midIndex = low + (high - low) / 2;
-                int mid = mountainArr.get(midIndex);
-                if (mid <= target)
-                    high = midIndex;
-                else
-                    low = midIndex + 1;
             }
-            return mountainArr.get(low) == target ? low : -1;
         }
+        return -1;
+    }
+
+    private int findDecrease(MountainArray mountainArr, int low, int high, int target) {
+        while (low <= high) {
+            int midIndex = low + (high - low) / 2;
+            int mid = mountainArr.get(midIndex);
+
+            if (mid == target) {
+                return midIndex;
+            } else if (mid > target) {
+                low = midIndex + 1;
+            } else {
+                high = midIndex - 1;
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
         new FindInMountainArray().solution(3, new MountainArrayImp(new int[]{1, 2, 3, 4, 5, 3, 1}));
+        new FindInMountainArray().solution(2, new MountainArrayImp(new int[]{1, 5, 2}));
     }
 }
 
 interface MountainArray {
-    public int get(int index);
-    public int length();
+    int get(int index);
+    int length();
 }
 
 class MountainArrayImp implements MountainArray {
@@ -95,10 +111,12 @@ class MountainArrayImp implements MountainArray {
         this.nums = nums;
     }
 
+    @Override
     public int get(int index) {
         return nums[index];
     }
 
+    @Override
     public int length() {
         return nums.length;
     }

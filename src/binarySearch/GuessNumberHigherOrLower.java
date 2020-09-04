@@ -12,21 +12,20 @@
 package src.binarySearch;
 
 public class GuessNumberHigherOrLower extends GuessGame {
-    // [1,n] 范围内猜数
     public int solution(int n) {
+        // [1,n] 范围内猜数
+        // [1, i] [i+1, n]，i+1 是目标
+        // 如果猜测的数 mid 在第一个区间，偏小，guess(mid) == 1
+        // 如果猜测的数 mid 在第二个区间，偏大或相等，guess(mid) <=0
         int low = 1, high = n;
         while (low < high) {
             int mid = low + (high - low) / 2;
 
-            // mid>target 时，[mid+1,high] 被排除
-            // mid=tartget 时，[mid+1,higt] 被排除
-            // mid<target 时，[low,mid] 被排除
-
-            if (guess(mid) == 1)
-                // 猜小了
+            if (guess(mid) == 1) {
                 low = mid + 1;
-            else
+            } else {
                 high = mid;
+            }
         }
         return low;
     }
@@ -40,12 +39,7 @@ class GuessGame {
     int num = 6;
 
     int guess(int pick) {
-        if (pick == num)
-            return 0;
-        else if (pick > num)
-            return -1;
-        else
-            return 1;
+        return Integer.compare(num, pick);
     }
 }
 

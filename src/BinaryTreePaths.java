@@ -48,6 +48,7 @@ public class BinaryTreePaths {
 
     private void dfs(TreeNode cur, String path) {
         if (path.length() == 0) {
+            // 更改 path 引用，跟实参没有关系 → 值传递
             path += cur.val;
         } else {
             path += "->";
@@ -63,6 +64,7 @@ public class BinaryTreePaths {
             dfs(cur.left, path);
             // 回溯，path 仍是进 dfs 之前的样子
             // 因为 String 是 final 的
+            // 而且 Java 只是值传递
         }
         if (cur.right != null) {
             dfs(cur.right, path);

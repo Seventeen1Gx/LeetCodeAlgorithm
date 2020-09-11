@@ -15,8 +15,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class LengthOfLongestSubstring {
-    // 其实是暴力法，试验每个子串，只不过做了剪枝
     public int solution1(String s) {
+        // 其实是暴力法，试验每个子串，只不过做了剪枝
+
         // i，j 确定子串 s[i:j)
         int i = 0, j = 1;
         // 最长无重复子串的长度至少为1
@@ -45,8 +46,9 @@ public class LengthOfLongestSubstring {
         return max;
     }
 
-    // 跟方法 1 的切换窗口的思路不同
     public int solution1_official(String s) {
+        // 跟方法 1 的切换窗口的思路不同
+
         int n = s.length();
         // set始终保存着s[i,j)中的字符
         Set<Character> set = new HashSet<>();
@@ -64,10 +66,11 @@ public class LengthOfLongestSubstring {
         return ans;
     }
 
-    // 滑动窗口优化法
-    // 想想 acbab，普通滑动窗口法若统计到第二个 b 的时候发现重复，则令 i 从第二个元素开始重新算，但又会发现 b 重复
-    // 然后令 i 从第三个元素开始，也一样，所以不如直接让 i 变为第一个 b 元素的下一个位置
     public int solution2FromOfficial(String s) {
+        // 滑动窗口优化法
+        // 想想 acbab，普通滑动窗口法若统计到第二个 b 的时候发现重复，则令 i 从第二个元素开始重新算，但又会发现 b 重复
+        // 然后令 i 从第三个元素开始，也一样，所以不如直接让 i 变为第一个 b 元素的下一个位置
+
         int n = s.length(), ans = 0;
         // Map 记录了子串 s[i:j) 中的字符以及这些字符所处位置的下一位置
         Map<Character, Integer> map = new HashMap<>(s.length());
@@ -82,13 +85,5 @@ public class LengthOfLongestSubstring {
             map.put(s.charAt(j), j + 1);
         }
         return ans;
-    }
-
-
-    public static void main(String[] args) {
-        String s = "abcabcbb";
-        LengthOfLongestSubstring l = new LengthOfLongestSubstring();
-
-        int max = l.solution1(s);
     }
 }

@@ -86,7 +86,6 @@ public class XunBao {
         if (nb == 0)
             return startDist[tx][ty];
 
-
         // dist[i][j] 表示 buttons 中第 i 个开关到第 j 个开关的最短距离     M→O→M'
         // dist[i][nb] 表示 buttons 中第 i 个开关到起点的最短距离          S→O→M
         // dist[i][nb+1] 表示 buttons 中第 i 个开关到终点的最短距离        M→T

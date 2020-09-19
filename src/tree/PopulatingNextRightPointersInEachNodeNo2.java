@@ -32,6 +32,5 @@ public class PopulatingNextRightPointersInEachNodeNo2 {
             cur = head.next;
         }
         return root;
-
     }
 }

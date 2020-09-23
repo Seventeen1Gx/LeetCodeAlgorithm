@@ -137,8 +137,4 @@ public class ShortestPalindrome {
         }
         return sRev.substring(0, len - f[newLen - 1]) + s;
     }
-
-    public static void main(String[] args) {
-        new ShortestPalindrome().solution3_official("aacecaaa");
-    }
 }

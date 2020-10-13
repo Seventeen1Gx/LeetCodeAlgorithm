@@ -37,6 +37,7 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
     }
 
     private int search(int[] nums, int left, int right, int target) {
+        // 可以预先使用 map 缓存起来
         int ans = -1;
         for (int i = left; i <= right; i++) {
             if (nums[i] == target) {

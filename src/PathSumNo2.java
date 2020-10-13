@@ -31,24 +31,17 @@ public class PathSumNo2 {
             return;
         }
 
+        result.add(p.val);
         if (p.left == null && p.right == null && p.val == sum) {
-            result.add(p.val);
             results.add(new ArrayList<>(result));
-            // 移除末尾的 p.val，回溯
-            result.remove(result.size() - 1);
         } else {
             // 向左走
-            result.add(p.val);
             recursion(p.left, sum - p.val, result);
-            // 移除末尾的 p.val，回溯
-            result.remove(result.size() - 1);
 
             // 向右走
-            result.add(p.val);
             recursion(p.right, sum - p.val, result);
-            // 移除末尾的 p.val，回溯
-            result.remove(result.size() - 1);
         }
+        result.remove(result.size() - 1);
     }
 
     public List<List<Integer>> solution2(TreeNode root, int sum) {
@@ -59,7 +52,6 @@ public class PathSumNo2 {
         }
 
         // 用栈记录来模拟递归方法
-
         Stack<TreeNode> nodeStack = new Stack<>();
         Stack<Integer> remainStack = new Stack<>();
         //还需要多一个栈来记录 list
@@ -80,7 +72,6 @@ public class PathSumNo2 {
                 list.add(node.val);
                 ans.add(new ArrayList<>(list));
             }
-
 
             if (node.left != null) {
                 // 向左走
